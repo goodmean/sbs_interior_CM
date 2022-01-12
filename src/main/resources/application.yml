@@ -1,0 +1,13 @@
+# 서버 기본 설정
+server:
+  port: 8085
+
+# 스프링 환경설정
+spring:
+
+  # DB 세팅
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/interiorCM?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeNehavior=convertToNull&connectTimeout=60
+    username: goodmean
+    password: 1234
