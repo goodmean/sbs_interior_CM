@@ -1,44 +1,44 @@
-# ÇÁ·ÎÁ§Æ® ÁÖÁ¦ : ÀÎÅ×¸®¾î Ä¿¹Â´ÏÆ¼
+## í”„ë¡œì íŠ¸ ì£¼ì œ : ì¸í…Œë¦¬ì–´ ì»¤ë®¤ë‹ˆí‹°
 
-# ½ÃÀÛ ÀÏÀÚ : 2022.01.11 ~
+### ì‹œì‘ ì¼ì : 2022.01.11 ~
 
-# ±â¼ú½ºÅÃ
-- ¹é¿£µå : Java / spring Boot
-- ÇÁ·ĞÆ® : thymeleaf
-- ºôµåÅø : gradle
+## ê¸°ìˆ ìŠ¤íƒ
+- ë°±ì—”ë“œ : Java / spring Boot
+- í”„ë¡ íŠ¸ : thymeleaf
+- ë¹Œë“œíˆ´ : gradle
 	- gradle vs maven
 - ORM(Object Relational Mapping) : Spring data JPA
 - Spring Security
 - DB : MySQL
-- ºôµå : jar / war
+- ë¹Œë“œ : jar / war
 - IDE : intelliJ
 
-# ±â´É
-- Member (È¸¿ø)
-	- join(È¸¿ø°¡ÀÔ)
-    - login(·Î±×ÀÎ)
-    - logout(·Î±×¾Æ¿ô)
-    - delete account(Å»Åğ)
-    - modify(È¸¿ø Á¤º¸ ¼öÁ¤)
+## ê¸°ëŠ¥
+- Member (íšŒì›)
+	- join(íšŒì›ê°€ì…)
+    - login(ë¡œê·¸ì¸)
+    - logout(ë¡œê·¸ì•„ì›ƒ)
+    - delete account(íƒˆí‡´)
+    - modify(íšŒì› ì •ë³´ ìˆ˜ì •)
     
-- Board (°Ô½ÃÆÇ)
-	- add(Ãß°¡)
-    - delete(»èÁ¦)
-    - modify(¼öÁ¤)
-    - list(¸®½ºÆ®)
-    - detail(µğÅ×ÀÏ)
+- Board (ê²Œì‹œíŒ)
+	- add(ì¶”ê°€)
+    - delete(ì‚­ì œ)
+    - modify(ìˆ˜ì •)
+    - list(ë¦¬ìŠ¤íŠ¸)
+    - detail(ë””í…Œì¼)
 
-- Article (°Ô½Ã±Û)
-	- save(Ãß°¡)
-    - delete(»èÁ¦)
-    - modify(¼öÁ¤)
-    - list(¸®½ºÆ®)
-    - detail(µğÅ×ÀÏ) : ´ñ±Û,ÁÁ¾Æ¿ä µî
+- Article (ê²Œì‹œê¸€)
+	- save(ì¶”ê°€)
+    - delete(ì‚­ì œ)
+    - modify(ìˆ˜ì •)
+    - list(ë¦¬ìŠ¤íŠ¸)
+    - detail(ë””í…Œì¼) : ëŒ“ê¸€,ì¢‹ì•„ìš” ë“±
     
-- Reply (´ñ±Û)
-	- µğ½ºÄ¿½º
+- Reply (ëŒ“ê¸€)
+	- ë””ìŠ¤ì»¤ìŠ¤
 
-- MyPage (¸¶ÀÌÆäÀÌÁö)
-	- ³»°¡ ¾´ ±Û
+- MyPage (ë§ˆì´í˜ì´ì§€)
+	- ë‚´ê°€ ì“´ ê¸€
     
-- ¸®½ºÆÃ/ÁÁ¾Æ¿ä/°Ë»ö
+- ë¦¬ìŠ¤íŒ…/ì¢‹ì•„ìš”/ê²€ìƒ‰
