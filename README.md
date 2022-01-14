@@ -1,4 +1,4 @@
-## 프로젝트 주제 : 인테리어 커뮤니티
+﻿## 프로젝트 주제 : 인테리어 커뮤니티
 
 ### 시작 일자 : 2022.01.11 ~
 
@@ -6,8 +6,7 @@
 - 백엔드 : Java / spring Boot
 - 프론트 : thymeleaf
 - 빌드툴 : gradle
-	- gradle vs maven
-- ORM(Object Relational Mapping) : Spring data JPA
+- ORM : Spring data JPA
 - Spring Security
 - DB : MySQL
 - 빌드 : jar / war
