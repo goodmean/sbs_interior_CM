@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="contents">
+
+            <div class="join-form">
+
+                <div class="join-title">
+                    <h1>회원가입</h1>
+                </div>
+
+                <form action="" th:action="@{~/members/join}" method="post">
+
+                    <div class="join-item">
+                        <span>아이디</span>
+                        <input type="text" name="loginId">
+                    </div>
+
+                    <div class="join-item">
+                        <span>비밀번호</span>
+                        <input type="password" name="loginPw">
+                    </div>
+
+                    <div class="join-item">
+                        <span>이름</span>
+                        <input type="text" name="name">
+                    </div>
+
+                    <div class="join-item">
+                        <span>닉네임</span>
+                        <input type="text" name="nickname">
+                    </div>
+
+                    <div class="join-item">
+                        <span>이메일</span>
+                        <input type="email" name="email">
+                    </div>
+
+                    <div class="join-item">
+                        <button>회원가입</button>
+                        <a href="/">
+                            <button type="button">취소</button>
+                        </a>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -39,6 +39,7 @@ public class MemberService implements UserDetailsService {
      * @param memberSaveForm
      */
 
+    @Transactional
     public void save(MemberSaveForm memberSaveForm) throws IllegalStateException{
 
         isDuplicateMember(
