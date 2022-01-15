@@ -25,11 +25,11 @@ public class MemberService implements UserDetailsService {
 
     public void isDuplicateMember(String loginId, String nickname, String email){
 
-        if(memberRepository.existByLoginId(loginId)){
+        if(memberRepository.existsByLoginId(loginId)){
             throw new IllegalStateException("이미 존재하는 아이디 입니다");
-        }else if(memberRepository.existByNickname(nickname)){
+        }else if(memberRepository.existsByNickname(nickname)){
             throw new IllegalStateException("이미 존재하는 아이디 입니다");
-        }else if(memberRepository.existByEmail(email)){
+        }else if(memberRepository.existsByEmail(email)){
             throw new IllegalStateException("이미 존재하는 이메일 입니다.");
         }
     }
