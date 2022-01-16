@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 
@@ -11,43 +13,43 @@
 
         <div class="contents">
 
-            <div class="join-form">
+            <div class="join-title, flex justify-center block pt-20 pb-20 text-gray-700 text-xl font-bold mb-2">
+                <h1>회원가입</h1>
+            </div>
 
-                <div class="join-title">
-                    <h1>회원가입</h1>
-                </div>
+            <div class="h-full flex justify-center items-center">
 
-                <form action="" th:action="@{~/members/join}" method="post">
+                <form style="text-align:left" class="bg-white rounded px-8 pt-6 pb-8 mb-4" action="" th:action="@{~/members/join}" method="post">
 
-                    <div class="join-item">
-                        <span>아이디</span>
-                        <input type="text" name="loginId">
+                    <div class="join-item, mb-4">
+                        <span class="block text-grey-darker text-sm font-bold mb-2">아이디</span>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text" name="loginId">
                     </div>
 
-                    <div class="join-item">
-                        <span>비밀번호</span>
-                        <input type="password" name="loginPw">
+                    <div class="join-item, mb-6">
+                        <span class="block text-grey-darker text-sm font-bold mb-2">비밀번호</span>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="password" name="loginPw">
                     </div>
 
-                    <div class="join-item">
-                        <span>이름</span>
-                        <input type="text" name="name">
+                    <div class="join-item, mb-4">
+                        <span class="block text-grey-darker text-sm font-bold mb-2">이름</span>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text" name="name">
                     </div>
 
-                    <div class="join-item">
-                        <span>닉네임</span>
-                        <input type="text" name="nickname">
+                    <div class="join-item, mb-4">
+                        <span class="block text-grey-darker text-sm font-bold mb-2">닉네임</span>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text" name="nickname">
                     </div>
 
-                    <div class="join-item">
-                        <span>이메일</span>
-                        <input type="email" name="email">
+                    <div class="join-item, mb-8">
+                        <span class="block text-grey-darker text-sm font-bold mb-2">이메일</span>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="email" name="email">
                     </div>
 
-                    <div class="join-item">
-                        <button>회원가입</button>
+                    <div class="join-item, flex items-center justify-between">
+                        <button class="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="button">회원가입</button>
                         <a href="/">
-                            <button type="button">취소</button>
+                            <button class="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="button">취소</button>
                         </a>
                     </div>
 
