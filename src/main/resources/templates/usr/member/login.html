@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="contents">
+
+            <form action="" th:action="@{~/members/doLogin}" th:object="${memberLoginForm}" method="post">
+
+                <div class="form-item">
+                    <span>아이디</span>
+                    <input type="text" name="loginId">
+                </div>
+
+                <div class="form-item">
+                    <span>비밀번호</span>
+                    <input type="password" name="loginPw">
+                </div>
+
+                <div class="form-item">
+                    <button>로그인</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

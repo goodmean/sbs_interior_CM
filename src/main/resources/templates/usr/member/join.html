@@ -17,9 +17,9 @@
                 <h1>회원가입</h1>
             </div>
 
-            <div class="h-full flex justify-center items-center">
+            <div class="flex justify-center items-center">
 
-                <form style="text-align:left" class="bg-white rounded px-8 pt-6 pb-8 mb-4" action="" th:action="@{~/members/join}" method="post">
+                <form action="" th:action="@{~/members/join}" method="post" style="text-align:left" class="bg-white rounded px-8 pt-6 pb-8 mb-4" >
 
                     <div class="join-item, mb-4">
                         <span class="block text-grey-darker text-sm font-bold mb-2">아이디</span>
@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="join-item, flex items-center justify-between">
-                        <button class="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="button">회원가입</button>
+                        <button class="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="submit">회원가입</button>
                         <a href="/">
                             <button class="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="button">취소</button>
                         </a>

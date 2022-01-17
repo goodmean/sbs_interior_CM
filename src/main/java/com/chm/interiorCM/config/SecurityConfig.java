@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests( authorize -> authorize
 
-                .mvcMatchers("/members/join").anonymous()
+                .mvcMatchers("/members/join", "/members/login").anonymous()
                 .mvcMatchers("/articles/**", "/").permitAll()
                 .mvcMatchers("/adm/**").hasRole("ADMIN")
                 .anyRequest()
@@ -34,8 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         )
                 .formLogin()
                     .loginPage("/members/login")
-                    .loginProcessingUrl("/doLogin")
-                    .usernameParameter("/loginId")
+                    .loginProcessingUrl("/members/doLogin")
+                    .usernameParameter("loginId")
                     .passwordParameter("loginPw")
                     .defaultSuccessUrl("/")
 
