@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+</head>
+<header th:fragment="headerFragment">
+
+    <div class="header">
+
+        <nav>
+            <ul>
+                <a href="/">
+                    <span>나만의 공간</span>
+                </a>
+            </ul>
+
+            <ul>
+                <li sec:authorize="isAnonymous">
+                    <a th:href="@{~/members/login}">로그인</a>
+                    <a th:href="@{~/members/join}">회원가입</a>
+                </li>
+
+                <li sec:authorize="isAuthenticated()">
+                    <span sec:authentication="principal.username">님</span>
+                </li>
+            </ul>
+
+        </nav>
+
+    </div>
+
+</header>
+<body>
+
+</body>
+</html>
