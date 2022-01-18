@@ -3,7 +3,7 @@ package com.chm.interiorCM.service;
 import com.chm.interiorCM.config.Role;
 import com.chm.interiorCM.dao.MemberRepository;
 import com.chm.interiorCM.domain.Member;
-import com.chm.interiorCM.dto.Member.MemberSaveForm;
+import com.chm.interiorCM.dto.member.MemberSaveForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -60,5 +62,17 @@ public class MemberService implements UserDetailsService {
         );
 
         memberRepository.save(member);
+    }
+
+    public Member findByLoginId(String loginId) throws IllegalStateException{
+
+        Optional<Member> memberOptional = memberRepository.findByLoginId(loginId);
+
+        // 만약 로그인 아이디로 찾는다고 했는데 존재하지 않는 회원일때 대처
+        memberOptional.orElseThrow(
+                () -> new IllegalStateException("존재하지 않는 아이디입니다.")
+        );
+
+        return memberOptional.get();
     }
 }

@@ -16,7 +16,9 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class Member implements UserDetails {
+
     @Id
+    @Column(name = "member_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -25,6 +27,9 @@ public class Member implements UserDetails {
     private String name;
     private String nickname;
     private String email;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE) // 영속성
+    private List<Article> articles = new ArrayList<>();
 
     private boolean isAccountNonExpired = true;
     private boolean isAccountNonLocked = true;

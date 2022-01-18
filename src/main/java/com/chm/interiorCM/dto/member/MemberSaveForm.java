@@ -1,4 +1,4 @@
-package com.chm.interiorCM.dto.Member;
+package com.chm.interiorCM.dto.member;
 
 import lombok.Data;
 

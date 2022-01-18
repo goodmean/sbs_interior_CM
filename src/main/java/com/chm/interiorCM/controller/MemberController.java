@@ -1,7 +1,7 @@
 package com.chm.interiorCM.controller;
 
-import com.chm.interiorCM.dto.Member.MemberLoginForm;
-import com.chm.interiorCM.dto.Member.MemberSaveForm;
+import com.chm.interiorCM.dto.member.MemberLoginForm;
+import com.chm.interiorCM.dto.member.MemberSaveForm;
 import com.chm.interiorCM.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

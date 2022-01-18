@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
 <head>
     <meta charset="UTF-8">
     <title>로그인</title>
 </head>
 <body>
-
+<div layout:fragment="content">
     <div class="container">
 
         <div class="contents">
@@ -32,5 +33,6 @@
         </div>
 
     </div>
+</div>
 </body>
 </html>
