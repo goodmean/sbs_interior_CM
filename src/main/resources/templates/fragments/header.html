@@ -8,16 +8,16 @@
 
     <div class="header">
 
-        <nav>
-            <ul>
-                <a href="/">
+        <nav class="flex mt-6 mx-56 p-3">
+            <ul class="flex">
+                <a href="/" class="text-2xl">
                     <span>나만의 공간</span>
                 </a>
             </ul>
 
-            <ul>
+            <ul class="flex ml-auto">
                 <li sec:authorize="isAnonymous">
-                    <a th:href="@{~/members/login}">로그인</a>
+                    <a class="mr-4" th:href="@{~/members/login}">로그인</a>
                     <a th:href="@{~/members/join}">회원가입</a>
                 </li>
 
