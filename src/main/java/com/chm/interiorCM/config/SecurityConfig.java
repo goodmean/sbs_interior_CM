@@ -14,14 +14,15 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 @AllArgsConstructor
-
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    // 정적파일 ignore
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().mvcMatchers("/css/**", "/js/**","/img/**","/error/**","/lib/**");
     }
 
+    // URL 정보 등록
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests( authorize -> authorize
