@@ -5,6 +5,16 @@ server:
 # 스프링 환경설정
 spring:
 
+  devtools:
+    livereload:
+      enabled: true
+
+    freemarker:
+      cache: false
+
+    thymeleaf:
+      cache: false
+
   # DB 세팅
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
