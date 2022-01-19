@@ -3,6 +3,7 @@ package com.chm.interiorCM.service;
 import com.chm.interiorCM.config.Role;
 import com.chm.interiorCM.dao.MemberRepository;
 import com.chm.interiorCM.domain.Member;
+import com.chm.interiorCM.dto.member.MemberModifyForm;
 import com.chm.interiorCM.dto.member.MemberSaveForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -75,4 +76,22 @@ public class MemberService implements UserDetailsService {
 
         return memberOptional.get();
     }
+
+    // 회원 정보 수정
+    @Transactional
+    public Long modifyMember(MemberModifyForm memberModifyForm, String loginId){
+
+        Member findMember = findByLoginId(loginId);
+
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
+        findMember.modifyMember(
+                bCryptPasswordEncoder.encode(memberModifyForm.getLoginPw()),
+                memberModifyForm.getNickname(),
+                memberModifyForm.getEmail()
+        );
+        
+        return findMember.getId();
+    }
+
 }

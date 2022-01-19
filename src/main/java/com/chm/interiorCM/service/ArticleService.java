@@ -4,6 +4,7 @@ import com.chm.interiorCM.dao.ArticleRepository;
 import com.chm.interiorCM.domain.Article;
 import com.chm.interiorCM.domain.Member;
 import com.chm.interiorCM.dto.article.ArticleSaveForm;
+import com.chm.interiorCM.dto.member.MemberModifyForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
