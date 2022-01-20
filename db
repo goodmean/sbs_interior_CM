@@ -1,0 +1,12 @@
+GRANT ALL PRIVILEGES ON *.*
+TO `goodmean`@'%'
+IDENTIFIED BY '1234';
+
+CREATE DATABASE `interiorCM`;
+USE `interiorCM`;
+
+SELECT * FROM `member`;
+
+SELECT * FROM `article`;
+
+SELECT * FROM `board`;
