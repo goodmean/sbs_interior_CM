@@ -25,6 +25,10 @@ public class Article {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id")
+    private Board board;
+
     public static Article createArticle(String title, String body){
         Article article = new Article();
 

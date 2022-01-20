@@ -16,6 +16,7 @@ public class ArticleService {
 
     private final ArticleRepository articleRepository;
 
+    @Transactional
     public void save(ArticleSaveForm articleSaveForm, Member member){
 
         Article article = Article.createArticle(
