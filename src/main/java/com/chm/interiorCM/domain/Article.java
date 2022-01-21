@@ -1,6 +1,7 @@
 package com.chm.interiorCM.domain;
 
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.parameters.P;
 
@@ -8,6 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED) //무분별한 객체 생성을 막기 위해서
 public class Article {
 
