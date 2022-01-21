@@ -5,6 +5,7 @@ import com.chm.interiorCM.domain.Article;
 import com.chm.interiorCM.domain.Board;
 import com.chm.interiorCM.dto.article.ArticleListDTO;
 import com.chm.interiorCM.dto.board.BoardDTO;
+import com.chm.interiorCM.dto.board.BoardModifyForm;
 import com.chm.interiorCM.dto.board.BoardSaveForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -61,6 +62,25 @@ public class BoardService {
         }
 
         return new BoardDTO(findBoard, articleList);
+    }
+
+    @Transactional
+    public Long modify(BoardModifyForm boardModifyForm) throws NoSuchElementException{
+
+        Optional<Board> boardOptional = boardRepository.findByName(boardModifyForm.getName());
+
+        boardOptional.orElseThrow(
+                () -> new NoSuchElementException("해당 게시판은 존재하지 않습니다.")
+        );
+
+        Board board = boardOptional.get();
+
+        board.modifyBoard(
+                boardModifyForm.getName(),
+                boardModifyForm.getDetail()
+        );
+
+        return board.getId();
     }
 
 }

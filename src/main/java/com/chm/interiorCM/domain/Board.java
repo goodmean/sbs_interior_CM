@@ -35,4 +35,12 @@ public class Board {
         return board;
     }
 
+    public void modifyBoard(String name, String detail){
+
+        this.name = name;
+        this.detail = detail;
+
+        this.updateDate = LocalDateTime.now();
+
+    }
 }
