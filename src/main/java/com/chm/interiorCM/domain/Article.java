@@ -31,6 +31,7 @@ public class Article {
     @JoinColumn(name = "board_id")
     private Board board;
 
+    // 생성 메소드
     public static Article createArticle(String title, String body){
         Article article = new Article();
 
@@ -40,7 +41,16 @@ public class Article {
         return article;
     }
 
-    // 연관관계 메서드
+    public  void modifyArticle(String title, String body){
+
+        this.title = title;
+        this.body = body;
+
+        this.updateDate = LocalDateTime.now();
+
+    }
+
+    // 연관관계 메소드
     public void setMember(Member member){
         this.member = member;
         member.getArticles().add(this);
