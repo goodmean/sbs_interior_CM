@@ -3,6 +3,7 @@ package com.chm.interiorCM.service;
 import com.chm.interiorCM.dao.ArticleRepository;
 import com.chm.interiorCM.domain.Article;
 import com.chm.interiorCM.domain.Member;
+import com.chm.interiorCM.dto.article.ArticleDTO;
 import com.chm.interiorCM.dto.article.ArticleModifyForm;
 import com.chm.interiorCM.dto.article.ArticleSaveForm;
 import com.chm.interiorCM.dto.member.MemberModifyForm;
@@ -10,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -59,6 +62,22 @@ public class ArticleService {
                 articleModifyForm.getBody()
         );
 
+    }
+
+    public List<ArticleDTO> getArticleList(){
+
+        List<Article> articleList = articleRepository.findAll();
+
+        List<ArticleDTO> articleDTOList = new ArrayList<>();
+
+        for(Article article : articleList){
+
+            ArticleDTO articleDTO = new ArticleDTO(article);
+            articleDTOList.add(articleDTO);
+
+        }
+
+        return articleDTOList;
     }
 
 }

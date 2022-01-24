@@ -2,6 +2,7 @@ package com.chm.interiorCM.controller;
 
 import com.chm.interiorCM.domain.Article;
 import com.chm.interiorCM.domain.Member;
+import com.chm.interiorCM.dto.article.ArticleDTO;
 import com.chm.interiorCM.dto.article.ArticleModifyForm;
 import com.chm.interiorCM.dto.article.ArticleSaveForm;
 import com.chm.interiorCM.service.ArticleService;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -89,6 +91,16 @@ public class ArticleController {
             return "usr/article/modify";
         }
 
+    }
+
+    @GetMapping("/articles")
+    public String showList(Model model){
+
+        List<ArticleDTO> articleList = articleService.getArticleList();
+
+        model.addAttribute("articleList", articleList);
+
+        return "/usr/article/list";
     }
 
 }
