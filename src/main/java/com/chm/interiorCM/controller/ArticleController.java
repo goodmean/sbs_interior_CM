@@ -61,7 +61,7 @@ public class ArticleController {
         return "redirect:/";
     }
 
-    @GetMapping("/articles/modify/[id}")
+    @GetMapping("/articles/modify/{id}")
     public String showModify(@PathVariable(name = "id") Long id, Model model){
 
         try {
