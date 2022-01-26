@@ -36,10 +36,10 @@ public class BoardController {
 
         boardService.save(boardSaveForm);
 
-        return "redirect:/";
+        return "redirect:/adm/boards";
     }
 
-    // list작업
+    // 게시판 리스트
     @GetMapping("/boards")
     public String showBoardList(Model model){
 
