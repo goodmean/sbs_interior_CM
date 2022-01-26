@@ -97,14 +97,13 @@ public class ArticleController {
     public String deleteArticle(@PathVariable(name = "id") Long id, Principal principal){
 
         try {
-
             ArticleDTO article = articleService.getArticle(id);
 
             if(article.getAuthorName() != principal.getName()){
-
                 return "redirect:/";
             }
             articleService.delete(id);
+            return "redirect:/";
 
         }catch (Exception e){
             return "redirect:/";
@@ -120,6 +119,20 @@ public class ArticleController {
         model.addAttribute("articleList", articleList);
 
         return "/usr/article/list";
+    }
+
+    @GetMapping("/articles/{id}")
+    public String showDetail(@PathVariable(name = "id") Long id, Model model){
+
+        try{
+            ArticleDTO findArticle = articleService.getArticle(id);
+            model.addAttribute("article", findArticle);
+
+            return "/usr/article/detail";
+        }catch (Exception e){
+            return "redirect:/";
+        }
+
     }
 
 }
