@@ -27,7 +27,7 @@ public class BoardController {
 
         model.addAttribute("boardSaveForm", new BoardSaveForm());
 
-        return "usr/board/add";
+        return "adm/board/add";
 
     }
 

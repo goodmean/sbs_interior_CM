@@ -12,7 +12,13 @@
 
         <div class="contents">
 
-            <form action="" th:action="@{~/articles/write}" method="post">
+            <div class="">
+                <span>게시판 이름 :</span>
+                <span th:text="${board.name}"></span>
+            </div>
+
+            <form action="" th:action="@{~/boards/} + ${board.id} + @{/articles/write}" method="post">
+                <input type="hidden" th:value="${board.id}" name = "board_id">
 
                 <div class="item">
                     <span>

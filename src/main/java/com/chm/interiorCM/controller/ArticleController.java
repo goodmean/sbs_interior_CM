@@ -6,6 +6,7 @@ import com.chm.interiorCM.domain.Member;
 import com.chm.interiorCM.dto.article.ArticleDTO;
 import com.chm.interiorCM.dto.article.ArticleModifyForm;
 import com.chm.interiorCM.dto.article.ArticleSaveForm;
+import com.chm.interiorCM.dto.board.BoardDTO;
 import com.chm.interiorCM.service.ArticleService;
 import com.chm.interiorCM.service.BoardService;
 import com.chm.interiorCM.service.MemberService;
@@ -29,16 +30,20 @@ public class ArticleController {
     private final MemberService memberService;
     private final BoardService boardService;
 
-    @GetMapping("/articles/write")
-    public String showWrite(Model model){
+    @GetMapping("/boards/{id}/articles/write")
+    public String showWrite(@PathVariable(name = "id") Long id, Model model){
+
+        BoardDTO boardDetail = boardService.getBoardDetail(id);
+
+        model.addAttribute("board", boardDetail);
 
         model.addAttribute("articleSaveForm", new ArticleSaveForm());
 
         return "usr/article/write";
     }
 
-    @PostMapping("/articles/write")
-    public String doWrite(@Validated ArticleSaveForm articleSaveForm, BindingResult bindingResult, Model model, Principal principal){
+    @PostMapping("/boards/{id}/articles/write")
+    public String doWrite(@Validated ArticleSaveForm articleSaveForm, BindingResult bindingResult, Model model, Principal principal, @PathVariable(name = "id") Long id){
 
         if(bindingResult.hasErrors()){
             return "usr/article/write";
@@ -62,7 +67,7 @@ public class ArticleController {
 
         }
 
-        return "redirect:/";
+        return "redirect:/articles";
     }
 
     @GetMapping("/articles/modify/{id}")

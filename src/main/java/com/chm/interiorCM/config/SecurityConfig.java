@@ -33,6 +33,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/members/modify",
                         "/boards/add"
                         ).permitAll()
+                        .mvcMatchers(
+                                "/boards/**"
+                        )
+                        .hasAnyRole("MEMBER", "ADMIN")
                 .mvcMatchers("/adm/**").hasRole("ADMIN")
                 .anyRequest()
                 .denyAll()
