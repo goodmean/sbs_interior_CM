@@ -2,6 +2,7 @@ package com.chm.interiorCM.service;
 
 import com.chm.interiorCM.dao.ArticleRepository;
 import com.chm.interiorCM.domain.Article;
+import com.chm.interiorCM.domain.Board;
 import com.chm.interiorCM.domain.Member;
 import com.chm.interiorCM.dto.article.ArticleDTO;
 import com.chm.interiorCM.dto.article.ArticleModifyForm;
@@ -24,7 +25,7 @@ public class ArticleService {
     private final ArticleRepository articleRepository;
 
     @Transactional
-    public void save(ArticleSaveForm articleSaveForm, Member member){
+    public void save(ArticleSaveForm articleSaveForm, Member member, Board board){
 
         Article article = Article.createArticle(
                 articleSaveForm.getTitle(),
@@ -32,6 +33,7 @@ public class ArticleService {
         );
 
         article.setMember(member);
+        article.setBoard(board);
 
         articleRepository.save(article);
 

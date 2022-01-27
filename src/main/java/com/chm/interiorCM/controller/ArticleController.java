@@ -1,11 +1,13 @@
 package com.chm.interiorCM.controller;
 
 import com.chm.interiorCM.domain.Article;
+import com.chm.interiorCM.domain.Board;
 import com.chm.interiorCM.domain.Member;
 import com.chm.interiorCM.dto.article.ArticleDTO;
 import com.chm.interiorCM.dto.article.ArticleModifyForm;
 import com.chm.interiorCM.dto.article.ArticleSaveForm;
 import com.chm.interiorCM.service.ArticleService;
+import com.chm.interiorCM.service.BoardService;
 import com.chm.interiorCM.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -24,8 +26,8 @@ import java.util.List;
 public class ArticleController {
 
     private final ArticleService articleService;
-
     private final MemberService memberService;
+    private final BoardService boardService;
 
     @GetMapping("/articles/write")
     public String showWrite(Model model){
@@ -45,10 +47,12 @@ public class ArticleController {
         try {
 
             Member findMember = memberService.findByLoginId(principal.getName());
+            Board findBoard = boardService.getBoard(articleSaveForm.getBoard_id());
 
             articleService.save(
                     articleSaveForm,
-                    findMember
+                    findMember,
+                    findBoard
             );
         } catch (IllegalStateException e){
 

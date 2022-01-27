@@ -17,12 +17,8 @@
 
                     <thead>
                         <tr>
-                            <th>
-                                게시판 번호
-                            </th>
-                            <th>
-                                게시판 이름
-                            </th>
+                            <th>게시판 번호</th>
+                            <th>게시판 이름</th>
                         </tr>
                     </thead>
 
@@ -32,8 +28,9 @@
                                 <span th:text="${board.id}"></span>
                             </td>
                             <td>
-                                <a th:href="@{~/adm/boards/} + ${board.id}"></a>
-                                <span th:text="${board.name}"></span>
+                                <a th:href="@{~/adm/boards/} + ${board.id}">
+                                    <span th:text="${board.name}"></span>
+                                </a>
                             </td>
                         </tr>
                     </tbody>
