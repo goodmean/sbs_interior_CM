@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 수정</title>
+</head>
+<body>
+    <div layout:fragment="content">
+
+        <div class="container">
+
+            <div class="content">
+
+                <form action="" th:action="@{~adm/boards/modify/} + ${board.id}" method="post">
+
+                    <div class="form-item">
+                        <span>게시판 이름</span>
+                        <input type="text", name="name" th:value="${board.name}">
+                    </div>
+
+                    <div class="form-item">
+                        <span>게시판 설명</span>
+                        <input type="text" name="detail" th:value="${board.detail}">
+                    </div>
+
+                    <div class="form-item">
+                        <button>수정</button>
+                        <a href="/">
+                            <button>취소</button>
+                        </a>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
