@@ -65,7 +65,7 @@ public class BoardService {
     }
 
     @Transactional
-    public Long modify(BoardModifyForm boardModifyForm) throws NoSuchElementException{
+    public Long modify(Long id, BoardModifyForm boardModifyForm) throws NoSuchElementException{
 
         Optional<Board> boardOptional = boardRepository.findByName(boardModifyForm.getName());
 
