@@ -125,6 +125,9 @@ public class ArticleController {
 
         List<ArticleDTO> articleList = articleService.getArticleList();
 
+        ArticleDTO articleDTO = articleList.get(0);
+
+        model.addAttribute("boardName", articleDTO.getBoardName());
         model.addAttribute("articleList", articleList);
 
         return "/usr/article/list";

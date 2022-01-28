@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 리스트</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <div class="">
+        <span>게시판 이름 :</span>
+        <span th:text="${boardName}"></span>
+
+    </div>
+
+    <table>
+
+        <thead>
+        <tr>
+            <th>게시글 번호</th>
+            <th>게시글 이름</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="article : ${articleList}">
+            <td>
+                <span th:text="${article.id}"></span>
+            </td>
+            <td>
+                <a th:href="@{~/articles/} + ${article.id}">
+                    <span th:text="${article.title}"></span>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+
+</div>
+
+</body>
+</html>

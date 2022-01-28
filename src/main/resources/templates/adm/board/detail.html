@@ -38,7 +38,7 @@
 
                         <tr th:each="article : ${board.articleListDTO}">
                             <td>
-                                <span th:text="article.id"></span>
+                                <span th:text="{article.id}"></span>
                             </td>
                             <td>
                                 <a th:href="@{~/articles/} + ${article.id}">
