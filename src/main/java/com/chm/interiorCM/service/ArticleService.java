@@ -8,6 +8,7 @@ import com.chm.interiorCM.dto.article.ArticleDTO;
 import com.chm.interiorCM.dto.article.ArticleModifyForm;
 import com.chm.interiorCM.dto.article.ArticleSaveForm;
 import com.chm.interiorCM.dto.member.MemberModifyForm;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -63,7 +64,7 @@ public class ArticleService {
     }
 
     @Transactional
-    public void modifyArticle(ArticleModifyForm articleModifyForm, Long id){
+    public void modifyArticle(ArticleModifyForm articleModifyForm, Board board, Long id){
 
         Article findArticle = getById(id);
 
@@ -71,6 +72,8 @@ public class ArticleService {
                 articleModifyForm.getTitle(),
                 articleModifyForm.getBody()
         );
+
+        findArticle.setBoard(board);
 
     }
 

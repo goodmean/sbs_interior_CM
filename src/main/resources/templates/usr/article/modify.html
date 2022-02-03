@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 수정</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <div class="container">
+
+        <div class="contents">
+
+            <div class="">
+                <span>게시판 이름</span>
+                <span th:text="${article.boardName}"></span>
+            </div>
+
+            <form action="" th:action="@{~/articles/modify/} + ${article.id}" method="post">
+
+                <input type="hidden" th:value="${article.boardId}" name="board_id">
+
+                <div class="form-item">
+                    <span>게시글 제목</span>
+                    <input type="text" name="title" th:value="${article.title}">
+                </div>
+
+                <div class="form-item">
+                    <span>게시글 내용</span>
+                    <textarea name="body" cols="30" rows="10" th:text="${article.body}"></textarea>
+                </div>
+
+                <div class="form-item">
+                    <button>확인</button>
+                    <a href="/">
+                        <button>취소</button>
+                    </a>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

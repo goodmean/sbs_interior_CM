@@ -74,15 +74,10 @@ public class ArticleController {
     public String showModify(@PathVariable(name = "id") Long id, Model model){
 
         try {
-            Article article = articleService.getById(id);
 
-            model.addAttribute(
-                    "articleModifyForm",
-                    new ArticleModifyForm(
-                        article.getTitle(),
-                        article.getBody()
-                    )
-            );
+            ArticleDTO article = articleService.getArticle(id);
+
+            model.addAttribute("article", article);
             return "usr/article/modify";
 
         }catch(Exception e){
@@ -94,8 +89,10 @@ public class ArticleController {
     public String doModify(@PathVariable(name = "id") Long id, ArticleModifyForm articleModifyForm){
 
         try{
-            articleService.modifyArticle(articleModifyForm, id);
-            return "redirect:/articles/" + id;
+            Board findBoard = boardService.getBoard(id);
+
+            articleService.modifyArticle(articleModifyForm, findBoard, id);
+            return "redirect:/adm/boards/" + id;
         }catch (Exception e){
             return "usr/article/modify";
         }
@@ -130,7 +127,7 @@ public class ArticleController {
         model.addAttribute("boardName", articleDTO.getBoardName());
         model.addAttribute("articleList", articleList);
 
-        return "/usr/article/list";
+        return "usr/article/list";
     }
 
     @GetMapping("/articles/{id}")
@@ -140,7 +137,7 @@ public class ArticleController {
             ArticleDTO findArticle = articleService.getArticle(id);
             model.addAttribute("article", findArticle);
 
-            return "/usr/article/detail";
+            return "usr/article/detail";
         }catch (Exception e){
             return "redirect:/";
         }

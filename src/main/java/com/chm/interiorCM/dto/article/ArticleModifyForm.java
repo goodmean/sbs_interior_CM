@@ -11,4 +11,6 @@ public class ArticleModifyForm {
 
     private String body;
 
+    private Long board_id;
+
 }
