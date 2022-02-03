@@ -3,6 +3,7 @@ package com.chm.interiorCM.service;
 import com.chm.interiorCM.dao.BoardRepository;
 import com.chm.interiorCM.domain.Article;
 import com.chm.interiorCM.domain.Board;
+import com.chm.interiorCM.domain.Member;
 import com.chm.interiorCM.dto.article.ArticleListDTO;
 import com.chm.interiorCM.dto.board.BoardDTO;
 import com.chm.interiorCM.dto.board.BoardModifyForm;
@@ -24,11 +25,12 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     @Transactional
-    public void save(BoardSaveForm boardSaveForm){
+    public void save(BoardSaveForm boardSaveForm, Member member){
 
         Board board = Board.createBoard(
                 boardSaveForm.getName(),
-                boardSaveForm.getDetail()
+                boardSaveForm.getDetail(),
+                member
         );
 
         boardRepository.save(board);

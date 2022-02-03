@@ -22,15 +22,20 @@ public class Board {
     private LocalDateTime regDate = LocalDateTime.now();
     private LocalDateTime updateDate = LocalDateTime.now();
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
+
     @OneToMany(mappedBy = "board", fetch = FetchType.LAZY)
     private List<Article> articles = new ArrayList<>();
 
-    public static Board createBoard(String name, String detail){
+    public static Board createBoard(String name, String detail, Member member){
 
         Board board = new Board();
 
         board.name = name;
         board.detail = detail;
+        board.member = member;
 
         return board;
     }

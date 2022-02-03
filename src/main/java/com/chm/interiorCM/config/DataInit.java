@@ -18,6 +18,7 @@ public class DataInit {
     @PostConstruct
     public void init(){
         initService.initAdmin();
+        initService.initMember();
     }
 
     @Component
@@ -41,6 +42,27 @@ public class DataInit {
             );
 
             memberRepository.save(admin);
+
+        }
+
+        public void initMember(){
+
+            BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
+            for( int i = 1; i <= 5; i++){
+
+                Member member = Member.createMember(
+                        "user" + i,
+                        bCryptPasswordEncoder.encode("user" + i),
+                        "유저1",
+                        "유저1",
+                        "user" + i + "@user.com",
+                        Role.MEMBER
+                );
+
+                memberRepository.save(member);
+
+            }
 
         }
 
