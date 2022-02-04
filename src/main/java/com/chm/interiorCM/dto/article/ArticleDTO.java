@@ -13,6 +13,7 @@ public class ArticleDTO {
     private String title;
     private String body;
 
+    private String memberLoginId;
     private String authorName;
 
     private Long boardId;
@@ -27,6 +28,8 @@ public class ArticleDTO {
         this.id = article.getId();
         this.title = article.getTitle();
         this.body = article.getBody();
+
+        this.memberLoginId = article.getMember().getLoginId();
         this.authorName = article.getMember().getNickname();
 
         this.boardId = article.getBoard().getId();
