@@ -47,6 +47,13 @@
                         <td>
                             <span th:text="${article.authorName}"></span>
                         </td>
+                        <td>
+                            <div class="">
+                                <a th:href="@{~/articles/delete/} + ${article.id}">
+                                    <span>삭제</span>
+                                </a>
+                            </div>
+                        </td>
                     </tr>
                     </tbody>
 

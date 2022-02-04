@@ -111,11 +111,11 @@ public class ArticleController {
         try {
             ArticleDTO article = articleService.getArticle(id);
 
-            if(article.getAuthorName() != principal.getName()){
-                return "redirect:/";
+            if(!article.getMemberLoginId().equals(principal.getName())){
+                return "redirect:/boards/" + id;
             }
             articleService.delete(id);
-            return "redirect:/";
+            return "redirect:/boards";
 
         }catch (Exception e){
             return "redirect:/";
