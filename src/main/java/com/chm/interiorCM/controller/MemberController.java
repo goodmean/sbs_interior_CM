@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
@@ -66,26 +67,39 @@ public class MemberController {
 
     }
 
-    @GetMapping("/members/modify")
-    public String showModify(Model model, Principal principal){
+    @GetMapping("/members/modify/{id}")
+    public String showModify(@PathVariable(name = "id") Long id, Model model, Principal principal){
 
-        Member findMember = memberService.findByLoginId(principal.getName());
+        Member findMember = memberService.findById(id);
 
-        model.addAttribute("member", findMember);
-        model.addAttribute("memberModifyForm", new MemberModifyForm());
+        if( !findMember.getLoginId().equals(principal.getName()) ){
+            return "redirect:/";
+        }
+
+        model.addAttribute("memberModifyForm", new MemberModifyForm(
+            findMember
+        ));
 
         return "usr/member/modify";
     }
 
-    @PostMapping("/members/modify")
-    public String doModify(MemberModifyForm memberModifyForm, Principal principal, Model model){
+    @PostMapping("/members/modify/{id}")
+    public String doModify(@PathVariable(name = "id") Long id, MemberModifyForm memberModifyForm, Principal principal, Model model){
+
+        Member findMember = memberService.findById(id);
+
+        if( !findMember.getLoginId().equals(principal.getName()) ){
+            return "redirect:/";
+        }
 
         try {
 
             memberService.modifyMember(memberModifyForm, principal.getName());
 
         } catch (Exception e){
+
             model.addAttribute("err_msg", e.getMessage());
+            model.addAttribute("memberModifyForm", new MemberModifyForm(findMember));
 
             return "usr/member/modify";
         }
