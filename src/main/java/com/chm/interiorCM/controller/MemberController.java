@@ -53,6 +53,8 @@ public class MemberController {
             memberService.save(memberSaveForm);
         }catch (Exception e){
             model.addAttribute("err_msg", e.getMessage());
+
+            return "usr/member/join";
         }
 
         return "redirect:/";
