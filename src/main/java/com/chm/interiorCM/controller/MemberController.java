@@ -84,7 +84,11 @@ public class MemberController {
     }
 
     @PostMapping("/members/modify/{id}")
-    public String doModify(@PathVariable(name = "id") Long id, MemberModifyForm memberModifyForm, Principal principal, Model model){
+    public String doModify(@PathVariable(name = "id") Long id, @Validated MemberModifyForm memberModifyForm, BindingResult bindingResult, Principal principal, Model model){
+
+        if( bindingResult.hasErrors() ){
+            return "usr/member/modify";
+        }
 
         Member findMember = memberService.findById(id);
 

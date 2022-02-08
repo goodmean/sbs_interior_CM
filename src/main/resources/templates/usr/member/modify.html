@@ -18,31 +18,34 @@
 
       <div class="flex justify-center items-center">
 
-        <form action="" th:action="@{~/members/modify}" method="post" style="text-align:left" class="bg-white rounded px-8 pt-6 pb-8 mb-4" >
+        <form action="" th:action="@{~/members/modify}" th:object="${memberModifyForm}" method="post" style="text-align:left" class="bg-white rounded px-8 pt-6 pb-8 mb-4" >
 
           <div class="join-item, mb-4">
             <span class="block text-grey-darker text-sm font-bold mb-2">아이디</span>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text" name="loginId" th:value="${member.loginId}" readonly>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text" name="loginId" th:field="*{loginId}" readonly>
           </div>
 
           <div class="join-item, mb-6">
             <span class="block text-grey-darker text-sm font-bold mb-2">비밀번호</span>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="password" name="loginPw">
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="password" name="loginPw" th:field="*{loginPw}" th:errorclass="field-error">
+            <span th:errors="*{loginPw}"></span>
           </div>
 
           <div class="join-item, mb-4">
             <span class="block text-grey-darker text-sm font-bold mb-2">이름</span>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text" name="name" th:value="${member.name}" readonly>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text" name="name" th:field="${name}" readonly>
           </div>
 
           <div class="join-item, mb-4">
             <span class="block text-grey-darker text-sm font-bold mb-2">닉네임</span>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text" name="nickname" th:value="${member.nickname}">
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text" name="nickname" th:field="${nickname}" th:errorclass="field-error">
+            <span th:errors="*{nickname}"></span>
           </div>
 
           <div class="join-item, mb-8">
             <span class="block text-grey-darker text-sm font-bold mb-2">이메일</span>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="email" name="email" th:value="${member.email}">
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="email" name="email" th:field="${email}" th:errorclass="field-error">
+            <span th:errors="*{email}"></span>
           </div>
 
           <div class="join-item, flex items-center justify-between">
