@@ -7,9 +7,9 @@ import javax.validation.constraints.NotBlank;
 @Data
 public class ArticleSaveForm {
 
-    @NotBlank
+    @NotBlank(message = "제목을 입력해 주세요")
     private String title;
-    @NotBlank
+    @NotBlank(message = "내용을 입력해 주세요")
     private String body;
 
     private Long board_id;

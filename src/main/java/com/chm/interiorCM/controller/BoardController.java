@@ -41,7 +41,7 @@ public class BoardController {
 
         boardService.save(boardSaveForm, findAdmin);
 
-        return "redirect:/adm/boards";
+        return "redirect:/boards";
     }
 
     // 게시판 리스트
