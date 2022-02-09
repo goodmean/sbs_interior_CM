@@ -12,13 +12,14 @@
 
         <div class="contents">
 
-            <form action="" th:action="@{~/adm/boards/add}" method="post">
+            <form action="" th:action="@{~/adm/boards/add}" th:object="${boardSaveForm}" method="post">
 
                 <div class="form-item">
                     <span>
                         게시판 이름
                     </span>
-                    <input type="text" name="name" required>
+                    <input type="text" name="name" th:field="*{name}" th:errorclass="field-error">
+                    <span th:errors="*{name}"></span>
                 </div>
 
                 <div class="form-item">
@@ -31,7 +32,7 @@
                 <div class="form-item">
                     <button>확인</button>
                     <a href="/">
-                        <button>취소</button>
+                        <button type="button">취소</button>
                     </a>
                 </div>
 

@@ -10,6 +10,8 @@ import com.chm.interiorCM.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,7 +37,11 @@ public class BoardController {
     }
 
     @PostMapping("/adm/boards/add")
-    public String doAddBoard(BoardSaveForm boardSaveForm, Principal principal){
+    public String doAddBoard(@Validated BoardSaveForm boardSaveForm, BindingResult bindingResult, Principal principal){
+
+        if( bindingResult.hasErrors() ){
+            return "adm/board/add";
+        }
 
         Member findAdmin = memberService.findByLoginId(principal.getName());
 
