@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 생성</title>
+</head>
+<body>
+    <div layout:fragment="content">
+
+        <div class="">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>회원 번호</th>
+                        <th>회원 아이디</th>
+                        <th>회원 이름</th>
+                        <th>회원 닉네임</th>
+                        <th>회원 가입일</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="member : ${members}">
+                        <td th:text="${member.memberId}">번호</td>
+                        <td th:text="${member.loginId}">아이디</td>
+                        <td th:text="${member.name}">이름</td>
+                        <td th:text="${member.nickname}">닉네임</td>
+                        <td th:text="${member.regDate}">가입일</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
