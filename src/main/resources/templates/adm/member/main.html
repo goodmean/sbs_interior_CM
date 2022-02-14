@@ -29,7 +29,17 @@
                         <td th:text="${member.loginId}">아이디</td>
                         <td th:text="${member.name}">이름</td>
                         <td th:text="${member.nickname}">닉네임</td>
-                        <td th:text="${member.regDate}">가입일</td>
+                        <td th:text="${#temporals.format(member.regDate, 'yyyy-MM-dd')}">가입일</td>
+                        <td>
+                            <a th:href="@{~/adm/members/detail} + ${member.memberId}">
+                                <span>회원 정보</span>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@{~/adm/members/ban/} + ${member.memberId}">
+                                <span>회원 탈퇴</span>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
 

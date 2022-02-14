@@ -14,8 +14,8 @@
             <span th:text="${member.memberId}"></span>
             <span th:text="${member.loginId}"></span>
             <span th:text="${member.nickname}"></span>
-            <span th:text="${name}"></span>
-            <span th:text="${regDate}"></span>
+            <span th:text="${member.name}"></span>
+            <span th:text="${#temporals.format(member.regDate, 'yyyy-MM-dd')}"></span>
 
         </div>
 
@@ -39,8 +39,8 @@
                         <td th:text="${article.id}"></td>
                         <td th:text="${article.title}"></td>
                         <td th:text="${article.nickname}"></td>
-                        <td th:text="${article.regDate}"></td>
-                        <td th:text="${article.updateDate}"></td>
+                        <td th:text="${#temporals.format(article.regDate, 'yyyy-MM-dd')}"></td>
+                        <td th:text="${#temporals.format(article.updateDate, 'yyyy-MM-dd')}"></td>
 
                     </tr>
                 </tbody>
