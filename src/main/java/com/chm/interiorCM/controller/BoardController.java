@@ -27,29 +27,6 @@ public class BoardController {
     private final BoardService boardService;
     private final MemberService memberService;
 
-    @GetMapping("/adm/boards/add")
-    public String showAddBoard(Model model){
-
-        model.addAttribute("boardSaveForm", new BoardSaveForm());
-
-        return "adm/board/add";
-
-    }
-
-    @PostMapping("/adm/boards/add")
-    public String doAddBoard(@Validated BoardSaveForm boardSaveForm, BindingResult bindingResult, Principal principal){
-
-        if( bindingResult.hasErrors() ){
-            return "adm/board/add";
-        }
-
-        Member findAdmin = memberService.findByLoginId(principal.getName());
-
-        boardService.save(boardSaveForm, findAdmin);
-
-        return "redirect:/boards";
-    }
-
     // 게시판 리스트
     @GetMapping("/boards")
     public String showBoardList(Model model){
@@ -72,60 +49,6 @@ public class BoardController {
         }
 
         return "adm/board/detail";
-
-    }
-    
-    // 수정
-    @GetMapping("/adm/boards/modify/{id}")
-    public String showModifyBoard(@PathVariable(name = "id") Long id, Model model){
-
-        try{
-            BoardDTO board = boardService.getBoardDetail(id);
-
-            model.addAttribute("boardId", board.getId());
-            model.addAttribute("boardModifyForm", new BoardModifyForm(
-                    board.getId(),
-                    board.getName(),
-                    board.getDetail()
-            ));
-
-            return "adm/board/modify";
-        }catch(Exception e){
-            return "redirect:/";
-        }
-
-
-    }
-
-    @PostMapping("/adm/boards/modify/{id}")
-    public String doModifyBoard(@PathVariable(name = "id") Long id, @Validated BoardModifyForm boardModifyForm, BindingResult bindingResult, Model model){
-
-        BoardDTO findBoard = boardService.getBoardDetail(id);
-
-        if( bindingResult.hasErrors() ){
-            model.addAttribute("boardId", findBoard.getId());
-            return "adm/board/modify";
-        }
-
-        try{
-            boardService.modify(id, boardModifyForm);
-        }catch (Exception e){
-            return "adm/board/modify";
-        }
-
-        return "redirect:/boards";
-    }
-
-    // 삭제
-    @GetMapping("/adm/boards/delete/{id}")
-    public String doDeleteBoard(@PathVariable(name = "id") Long id){
-
-        try{
-            boardService.delete(id);
-            return "adm/board/list";
-        }catch (Exception e){
-            return "adm/board/list";
-        }
 
     }
 
