@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 관리</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <div class="">
+
+        <table>
+
+            <thead>
+            <tr>
+                <th>게시글 번호</th>
+                <th>게시글 제목</th>
+                <th>게시글 작성자</th>
+                <th>게시글 작성일</th>
+                <th>게시글 수정일</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="article : ${articles}">
+                <td th:text="${article.id}"></td>
+                <td th:text="${article.title}"></td>
+                <td th:text="${article.nickname}"></td>
+                <td th:text="${#temporals.format(article.regDate, 'yyyy-MM-dd')}"></td>
+                <td th:text="${#temporals.format(article.updateDate, 'yyyy-MM-dd')}"></td>
+            </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+</body>
+</html>
