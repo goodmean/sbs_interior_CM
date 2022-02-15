@@ -11,6 +11,12 @@
 
     <div class="">
 
+        <div class="">
+            <a th:href="@{~/adm/boards/add}">
+                <span>게시판 생성</span>
+            </a>
+        </div>
+
         <table>
 
             <thead>
@@ -26,6 +32,16 @@
                 <td th:text="${board.boardId}">번호</td>
                 <td th:text="${board.name}">이름</td>
                 <td th:text="${board.detail}">설명</td>
+                <td>
+                    <a th:href="@{~/adm/boards/modify/} + ${board.boardId}">
+                        <span>수정</span>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{~/adm/boards/delete/} + ${board.boardId}">
+                        <span>삭제</span>
+                    </a>
+                </td>
             </tr>
             </tbody>
 
