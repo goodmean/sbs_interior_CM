@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 관리</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <div class="">
+
+        <table>
+
+            <thead>
+            <tr>
+                <th>게시판 번호</th>
+                <th>게시판 이름</th>
+                <th>게시판 설명</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="board : ${boards}">
+                <td th:text="${board.boardId}">번호</td>
+                <td th:text="${board.name}">이름</td>
+                <td th:text="${board.detail}">설명</td>
+            </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+
+</div>
+</body>
+</html>

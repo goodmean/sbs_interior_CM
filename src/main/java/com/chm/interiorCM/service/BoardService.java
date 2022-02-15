@@ -6,6 +6,7 @@ import com.chm.interiorCM.domain.Board;
 import com.chm.interiorCM.domain.Member;
 import com.chm.interiorCM.dto.article.ArticleListDTO;
 import com.chm.interiorCM.dto.board.BoardDTO;
+import com.chm.interiorCM.dto.board.BoardListDTO;
 import com.chm.interiorCM.dto.board.BoardModifyForm;
 import com.chm.interiorCM.dto.board.BoardSaveForm;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,20 @@ import java.util.Optional;
 public class BoardService {
 
     private final BoardRepository boardRepository;
+
+    public List<BoardListDTO> getBoardsList() {
+
+        List<BoardListDTO> boardListDTOList = new ArrayList<>();
+
+        List<Board> boardList = boardRepository.findAll();
+
+        for( Board board : boardList ){
+            BoardListDTO boardListDTO = new BoardListDTO(board);
+            boardListDTOList.add(boardListDTO);
+        }
+
+        return boardListDTOList;
+    }
 
     @Transactional
     public void save(BoardSaveForm boardSaveForm, Member member){
