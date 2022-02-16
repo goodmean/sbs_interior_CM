@@ -29,6 +29,11 @@
                 <td th:text="${article.nickname}"></td>
                 <td th:text="${#temporals.format(article.regDate, 'yyyy-MM-dd')}"></td>
                 <td th:text="${#temporals.format(article.updateDate, 'yyyy-MM-dd')}"></td>
+                <td>
+                    <a th:href="@{~/adm/articles/delete/} + ${article.id}">
+                        <span>삭제</span>
+                    </a>
+                </td>
             </tr>
             </tbody>
 
