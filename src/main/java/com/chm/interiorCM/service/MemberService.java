@@ -2,9 +2,12 @@ package com.chm.interiorCM.service;
 
 import com.chm.interiorCM.config.Role;
 import com.chm.interiorCM.dao.MemberRepository;
+import com.chm.interiorCM.domain.Article;
 import com.chm.interiorCM.domain.Member;
+import com.chm.interiorCM.dto.article.ArticleDTO;
 import com.chm.interiorCM.dto.member.MemberModifyForm;
 import com.chm.interiorCM.dto.member.MemberSaveForm;
+import com.chm.interiorCM.dto.member.MyPageDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,13 +16,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class MemberService implements UserDetailsService {
+
     private final MemberRepository memberRepository;
+    private final ArticleService articleService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -105,4 +112,20 @@ public class MemberService implements UserDetailsService {
         return findMember.getId();
     }
 
+    public MyPageDTO getMyArticles(String loginId) {
+
+        List<ArticleDTO> articleDTOList = new ArrayList<>();
+
+        Member findMember = findByLoginId(loginId);
+
+        List<Article> articles = findMember.getArticles();
+
+        for( Article article : articles ){
+            ArticleDTO findArticle = articleService.getArticle(article.getId());
+            articleDTOList.add(findArticle);
+        }
+
+        return new MyPageDTO(findMember, articleDTOList);
+
+    }
 }

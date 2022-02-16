@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+
+</head>
+<body>
+<div layout:fragment="content">
+
+    <div class="">
+
+        <div class="">
+            <span>회원 닉네임</span>
+            <span th:text="${memberInfo.nickname}"></span>
+        </div>
+
+        <table>
+
+            <thead>
+            <tr>
+                <th>게시글 번호</th>
+                <th>게시글 제목</th>
+                <th>게시판 이름</th>
+                <th>게시글 작성일</th>
+                <th>게시글 수정일</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="article : ${memberInfo.articles}">
+                <td>
+                    <span th:text="${article.id}"></span>
+                </td>
+                <td>
+                    <a th:href="@{~/articles/} + ${article.id}">
+                        <span th:text="${article.title}"></span>
+                    </a>
+                </td>
+                <td>
+                    <span th:text="${article.boardName}"></span>
+                </td>
+                <td>
+                    <span th:text="${article.regDate}"></span>
+                </td>
+                <td>
+                    <span th:text="${article.updateDate}"></span>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+</body>
+</html>
