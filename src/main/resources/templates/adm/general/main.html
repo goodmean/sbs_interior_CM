@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 페이지</title>
+</head>
+<body>
+    <div layout:fragment="content">
+
+        <div class="">
+            <a th:href="@{~/adm/members}">
+                <span>회원 관리</span>
+            </a>
+        </div>
+        <div class="">
+            <a th:href="@{~/adm/articles}">
+                <span>게시글 관리</span>
+            </a>
+        </div>
+        <div class="">
+            <a th:href="@{~/adm/boards}">
+                <span>게시판 관리</span>
+            </a>
+        </div>
+    </div>
+<body>
+
+</body>
+</html>
