@@ -36,8 +36,11 @@
             </div>
 
             <form action="" th:action="@{~/members/join}" th:object="${memberSaveForm}" method="POST" onsubmit="return checkStatus()">
+
                 <div class="flex justify-center">
+
                     <div class="flex-col">
+
                         <div class="form-item mb-4">
                             <input id="loginId" class="border rounded p-1 rounded bg-gray-50" name="loginId" type="text" placeholder="아이디" autocomplete="off" th:field="*{loginId}" th:errorclass="field-error">
                             <span th:errors="*{loginId}"></span>
