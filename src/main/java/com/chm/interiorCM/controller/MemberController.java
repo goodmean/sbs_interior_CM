@@ -1,6 +1,7 @@
 package com.chm.interiorCM.controller;
 
 import com.chm.interiorCM.domain.Member;
+import com.chm.interiorCM.dto.member.CheckStatus;
 import com.chm.interiorCM.dto.member.MemberLoginForm;
 import com.chm.interiorCM.dto.member.MemberModifyForm;
 import com.chm.interiorCM.dto.member.MemberSaveForm;
@@ -10,9 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -21,6 +20,19 @@ import java.security.Principal;
 public class MemberController {
 
     private final MemberService memberService;
+
+    @RequestMapping("/members/check/id")
+    @ResponseBody
+    public CheckStatus checkDuple(@RequestParam String loginId){
+
+        boolean isExists = memberService.isDupleMember(loginId);
+
+        CheckStatus checkStatus = new CheckStatus(isExists);
+
+        System.out.println(checkStatus);
+
+        return checkStatus;
+    }
 
     /**
      * 회원가입 페이지 이동

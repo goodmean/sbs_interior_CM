@@ -1,80 +1,87 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout}">
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
     <script th:inline="javascript">
+
         /*<![CDATA[*/
 
         let err_msg = [[ ${err_msg} ]]
 
-        if( err_msg != null || err_msg != undefined ){
-            alert(err_msg);
+        if( err_msg != null err_msg != undefined ){
+
+        alert(err_msg);
+
         }
 
         /*]]*/
+
     </script>
+    <script src="/js/join.js"></script>
 </head>
 <body>
 <div layout:fragment="content">
-    <div class="container">
 
-        <div class="contents">
+    <div class="mb-20"></div>
 
-            <div class="join-title, flex justify-center block pt-20 pb-20 text-gray-700 text-xl font-bold mb-2">
-                <h1>회원가입</h1>
+    <div class="container flex justify-center mx-auto">
+
+        <div class="join-form border p-20 rounded-lg shadow-md">
+
+            <div class="join-title text-2xl flex justify-center mb-12">
+                <span> 회원가입</span>
             </div>
 
-            <div class="flex justify-center items-center">
+            <form action="" th:action="@{~/members/join}" th:object="${memberSaveForm}" method="POST" onsubmit="return checkStatus()">
+                <div class="flex justify-center">
+                    <div class="flex-col">
+                        <div class="form-item mb-4">
+                            <input id="loginId" class="border rounded p-1 rounded bg-gray-50" name="loginId" type="text" placeholder="아이디" autocomplete="off" th:field="*{loginId}" th:errorclass="field-error">
+                            <span th:errors="*{loginId}"></span>
+                            <button type="button" onclick="checkDupleLoginId()">중복확인</button>
+                        </div>
 
-                <form action="" th:action="@{~/members/join}" th:object="${memberSaveForm}" method="post" style="text-align:left" class="bg-white rounded px-8 pt-6 pb-8 mb-4" >
+                        <div class="form-item mb-4">
+                            <input class="border rounded p-1 rounded bg-gray-50" name="loginPw" type="password" placeholder="비밀번호" autocomplete="off" th:field="*{loginPw}" th:errorclass="field-error">
+                            <span th:errors="*{loginPw}"></span>
+                        </div>
 
-                    <div class="join-item, mb-4">
-                        <span class="block text-grey-darker text-sm font-bold mb-2">아이디</span>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text" name="loginId" th:field="*{loginId}" th:errorclass="field-error">
-                        <span th:errors="*{loginId}"></span>
+                        <div class="form-item mb-4">
+                            <input class="border rounded p-1 rounded bg-gray-50" name="name" type="text" placeholder="이름" autocomplete="off" th:field="*{name}" th:errorclass="field-error">
+                            <span th:errors="*{name}"></span>
+                        </div>
+
+                        <div class="form-item mb-4">
+                            <input class="border rounded p-1 rounded bg-gray-50" name="nickname" type="text" placeholder="닉네임" autocomplete="off" th:field="*{nickname}" th:errorclass="field-error">
+                            <span th:errors="*{nickname}"></span>
+                        </div>
+
+                        <div class="form-item mb-4">
+                            <input class="border rounded p-1 rounded bg-gray-50" name="email" type="email" placeholder="이메일" autocomplete="off" th:field="*{email}" th:errorclass="field-error">
+                            <span th:errors="*{email}"></span>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="join-item, mb-6">
-                        <span class="block text-grey-darker text-sm font-bold mb-2">비밀번호</span>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="password" name="loginPw" th:field="*{loginId}" th:errorclass="field-error">
-                        <span th:errors="*{loginPw}"></span>
-                    </div>
+                <div class="form-item flex justify-center mt-8">
+                    <button class="mr-4 border bg-blue-500 p-1 rounded text-white">회원가입</button>
+                    <a href="/">
+                        <button class="border bg-blue-500 p-1 rounded text-white" type="button">
+                            취소
+                        </button>
+                    </a>
+                </div>
 
-                    <div class="join-item, mb-4">
-                        <span class="block text-grey-darker text-sm font-bold mb-2">이름</span>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text" name="name" th:field="*{loginId}" th:errorclass="field-error">
-                        <span th:errors="*{name}"></span>
-                    </div>
-
-                    <div class="join-item, mb-4">
-                        <span class="block text-grey-darker text-sm font-bold mb-2">닉네임</span>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text" name="nickname" th:field="*{loginId}" th:errorclass="field-error">
-                        <span th:errors="*{nickname}"></span>
-                    </div>
-
-                    <div class="join-item, mb-8">
-                        <span class="block text-grey-darker text-sm font-bold mb-2">이메일</span>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="email" name="email" th:field="*{loginId}" th:errorclass="field-error">
-                        <span th:errors="*{email}"></span>
-                    </div>
-
-                    <div class="join-item, flex items-center justify-between">
-                        <button class="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="submit">회원가입</button>
-                        <a href="/">
-                            <button class="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="button">취소</button>
-                        </a>
-                    </div>
-
-                </form>
-
-            </div>
+            </form>
 
         </div>
 
     </div>
+
 </div>
+
 </body>
 </html>

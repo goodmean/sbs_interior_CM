@@ -128,4 +128,10 @@ public class MemberService implements UserDetailsService {
         return new MyPageDTO(findMember, articleDTOList);
 
     }
+
+    public boolean isDupleMember(String loginId){
+
+        return memberRepository.existsByLoginId(loginId);
+    }
+
 }
