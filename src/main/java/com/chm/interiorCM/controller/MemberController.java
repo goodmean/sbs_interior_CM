@@ -23,13 +23,24 @@ public class MemberController {
 
     @RequestMapping("/members/check/id")
     @ResponseBody
-    public CheckStatus checkDuple(@RequestParam String loginId){
+    public CheckStatus checkLoginId(@RequestParam String loginId){
 
-        boolean isExists = memberService.isDupleMember(loginId);
+        boolean isExists = memberService.isDupleLoginId(loginId);
 
         CheckStatus checkStatus = new CheckStatus(isExists);
 
         System.out.println(checkStatus);
+
+        return checkStatus;
+    }
+
+    @RequestMapping("/members/check/nickname")
+    @ResponseBody
+    public CheckStatus checkNickname(@RequestParam String nickname){
+
+        boolean isExists = memberService.idDupleNickname(nickname);
+
+        CheckStatus checkStatus = new CheckStatus(isExists);
 
         return checkStatus;
     }
