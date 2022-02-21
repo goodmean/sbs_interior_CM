@@ -58,14 +58,15 @@
                         </div>
 
                         <div class="form-item mb-4">
-                            <input id="nickname" class="border rounded p-1 rounded bg-gray-50" name="nickname" type="text" placeholder="닉네임" autocomplete="off" th:field="*{nickname}" th:errorclass="field-error">
+                            <input id="nickname" id="nickname" class="border rounded p-1 rounded bg-gray-50" name="nickname" type="text" placeholder="닉네임" autocomplete="off" th:field="*{nickname}" th:errorclass="field-error">
                             <span th:errors="*{nickname}"></span>
+                            <button type="button" onclick="checkDupleNickname()">중복확인</button>
                         </div>
 
                         <div class="form-item mb-4">
-                            <input class="border rounded p-1 rounded bg-gray-50" name="email" type="email" placeholder="이메일" autocomplete="off" th:field="*{email}" th:errorclass="field-error">
+                            <input id="email" class="border rounded p-1 rounded bg-gray-50" name="email" type="email" placeholder="이메일" autocomplete="off" th:field="*{email}" th:errorclass="field-error">
                             <span th:errors="*{email}"></span>
-                            <button type="button" onclick="checkDupleNickname()">중복확인</button>
+                            <button type="button" onclick="checkDupleEmail()">중복확인</button>
                         </div>
                     </div>
                 </div>
