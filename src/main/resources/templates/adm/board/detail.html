@@ -36,7 +36,7 @@
 
                     <tbody>
 
-                        <tr th:each="article : ${board.articleListDTO}">
+                        <tr th:each="article : ${articles}">
                             <td>
                                 <span th:text="${article.id}"></span>
                             </td>
@@ -53,6 +53,12 @@
 
                 </table>
 
+            </div>
+
+            <div class="page-container">
+                <th:block th:each="i : ${#numbers.sequence(1, maxPage)}">
+                    <a th:href="@{~/boards/} + ${board.id} + @{?page=} + ${i}" th:text="${i}"></a>
+                </th:block>
             </div>
 
         </div>
