@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // 정적파일 ignore
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().mvcMatchers("/css/**", "/js/**","/img/**","/error/**","/lib/**");
+        web.ignoring().mvcMatchers("/css/**", "/js/**","/images/**","/error/**","/lib/**");
     }
 
     // URL 정보 등록

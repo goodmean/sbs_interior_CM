@@ -31,7 +31,7 @@ a.more {
 	line-height:23px; 
 	text-align: center; 
 	text-decoration: none; 
-	background: url(../images/tooplate_more.png); 
+	background: url(/images/tooplate_more.png);
 	font-weight: 700; 
 	color: #000; 
 }
@@ -106,7 +106,7 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
 	color:#000; 
 	margin: 0 0 5px 0; 
 	padding: 0 0 0 15px; 
-	background: url(../images/tooplate_list.png) no-repeat scroll 0 7px;  
+	background: url(/images/tooplate_list.png) no-repeat scroll 0 7px;
 }
 
 .tooplate_list li a { 
@@ -183,7 +183,7 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
 	position: absolute;
 	top: 0; left: -5px;
 	width: 5px; height: 40px;
-	background: url(../images/tooplate_ml.png) no-repeat;
+	background: url(/images/tooplate_ml.png) no-repeat;
 }
 
 /* site title */
@@ -210,7 +210,7 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
 	text-align: center; 
 	text-decoration: none; 
 	letter-spacing: 2px; 
-	background: url(../images/tooplate_logo.png) no-repeat top center; 
+	background: url(/images/tooplate_logo.png) no-repeat top center;
 }
 
 /* slider */
@@ -220,7 +220,7 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
 	width: 950px;
 	height: 605px;
 	padding: 10px 15px 70px;
-	background: url(../images/tooplate_slider.png) no-repeat;
+	background: url(/images/tooplate_slider.png) no-repeat;
 }
 
 /* main */
@@ -240,7 +240,7 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
 .sidebar_box {
 	padding-bottom: 15px;
 	margin-bottom: 15px;
-	background: url(../images/tooplate_divider.png) repeat-x bottom;
+	background: url(/images/tooplate_divider.png) repeat-x bottom;
 }
 
 .news_box {
@@ -319,7 +319,7 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
 	clear: both; 
 	margin-bottom: 30px; 
 	padding-bottom: 30px; 
-	background: url(../images/tooplate_divider.png) repeat-x bottom; 
+	background: url(/images/tooplate_divider.png) repeat-x bottom;
 }
 
 .post_box img { 
@@ -332,7 +332,7 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
 	padding: 0 0 10px 0; 
 	margin-bottom: 5px; 
 	line-height: 34px; 
-	background: url(../images/tooplate_divider.png) repeat-x bottom; 
+	background: url(/images/tooplate_divider.png) repeat-x bottom;
 }
 
 .post_meta { 
@@ -462,7 +462,7 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
 	margin: 0 auto;
 	color: #666;
 	text-align: center;
-	background: url(../images/tooplate_footer.jpg);
+	background: url(/images/tooplate_footer.jpg);
 }
 
 #tooplate_footer a { 

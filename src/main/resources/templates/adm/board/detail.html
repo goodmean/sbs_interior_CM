@@ -36,6 +36,7 @@
 
                     <tbody>
 
+                    <th:block th:if="${articles.size() != 0}">
                         <tr th:each="article : ${articles}">
                             <td>
                                 <span th:text="${article.id}"></span>
@@ -49,6 +50,14 @@
                                 <span th:text="${article.nickname}"></span>
                             </td>
                         </tr>
+                    </th:block>
+                    <th:block th:unless="${articles.size() != 0}">
+                        <tr>
+                            <td>
+                                <span>검색 결과가 없습니다.</span>
+                            </td>
+                        </tr>
+                    </th:block>
                     </tbody>
 
                 </table>
@@ -56,8 +65,16 @@
             </div>
 
             <div class="page-container">
-                <th:block th:each="i : ${#numbers.sequence(1, maxPage)}">
-                    <a th:href="@{~/boards/} + ${board.id} + @{?page=} + ${i}" th:text="${i}"></a>
+                <th:block th:if="${articles.size() != 0}">
+                    <th:block th:each="i : ${#numbers.sequence(1, maxPage)}">
+                        <a th:href="@{~/boards/} + ${board.id} + @{?page=} + ${i}" th:text="${i}"></a>
+                    </th:block>
+                </th:block>
+
+                <th:block>
+                    <th:block th:unless="${articles.size() != 0}">
+                        <a th:href="@{~/boards/} + ${board.id} + @{?page=} + 1" th:text="1"></a>
+                    </th:block>
                 </th:block>
             </div>
 
