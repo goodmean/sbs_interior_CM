@@ -39,7 +39,7 @@ public class BoardController {
     }
 
     @GetMapping("/boards/{id}") // http://localhost:8085/boards/id?page=1&searchKeyword=제목
-    public String showBoardDetail(@PathVariable(name = "id")Long id, Model model, @RequestParam(name = "page", defaultValue = "1") int page, @RequestParam(name = "searchKeyword") String searchKeyword){
+    public String showBoardDetail(@PathVariable(name = "id")Long id, Model model, @RequestParam(name = "page", defaultValue = "1") int page, @RequestParam(name = "searchKeyword", defaultValue = "") String searchKeyword){
 
         int size = 10;
 
