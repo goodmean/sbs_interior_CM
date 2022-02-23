@@ -75,6 +75,12 @@ public class Member implements UserDetails {
         return authorities;
     }
 
+    public void changePw( String pw ){
+
+        this.loginPw = pw;
+
+    }
+
     @Override
     public String getPassword() {
         return loginPw;

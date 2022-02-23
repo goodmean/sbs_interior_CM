@@ -5,6 +5,18 @@ server:
 # 스프링 환경설정
 spring:
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: zizigoo12@gmail.com
+    password:
+    properties:
+      mail:
+        smtp:
+          suth: true
+          starttls:
+            enable: true
+
   devtools:
     livereload:
       enabled: true

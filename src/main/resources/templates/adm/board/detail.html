@@ -29,7 +29,7 @@
                     <form th:action="@{~/boards/} + ${board.id} + @{?page=} + ${currentPage}" method="get">
 
                         <input type="hidden" name="page" value="1">
-                        <input type="text" name="searchKeyword" th:value="${#request.getParameter('searchKeyword')}">
+                        <input type="text" name="searchKeyword" th:value="${keyword}">
 
                         <button>검색</button>
 
@@ -77,7 +77,7 @@
 
             </div>
 
-            <div class="page-container" th:with="keyword = ${#request.getParameter('searchKeyword')}">
+            <div class="page-container">
                 <th:block th:if="${articles.size() != 0}">
                     <th:block th:each="i : ${#numbers.sequence(1, maxPage)}">
                         <a th:if="${keyword.equals('')}" th:href="@{~/boards/} + ${board.id} + @{?page=} + ${i}" th:text="${i}"></a>

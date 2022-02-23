@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+  <meta charset="UTF-8">
+  <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+  <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+  <title>비밀번호 찾기</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+  <div class="mb-32"></div>
+
+  <div class="container flex justify-center mx-auto">
+
+    <div class="join-form border p-20 rounded-lg shadow-md">
+
+      <div class="login-title text-2xl flex justify-center mb-12">
+        <span> 비밀번호 찾기 </span>
+      </div>
+
+      <form action="" method="POST" id="findForm">
+        <div class="flex justify-center">
+          <div class="flex-col">
+            <div class="form-item mb-4">
+              <input class="border rounded p-1 rounded bg-gray-50" type="text" name="loginId" id="loginId"  placeholder="아이디" autocomplete="off" required>
+            </div>
+
+            <div class="form-item mb-4">
+              <input class="border rounded p-1 rounded bg-gray-50" type="email" name="email" id="email"  placeholder="이메일" autocomplete="off" required>
+            </div>
+            <div class="form-item flex justify-center mt-12">
+              <button class="mr-4 border bg-blue-500 p-1 rounded text-white">
+                확인
+              </button>
+              <a href="/">
+                <button class="border bg-blue-500 p-1 rounded text-white">취소</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="/js/findpw.js"></script>
+</body>
+</html> 
