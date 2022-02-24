@@ -1,0 +1,48 @@
+# 서버 기본 설정
+server:
+  port: 8085
+
+# 스프링 환경설정
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: [google mail] #gmail 계정
+    password: [google app password] #비밀번호 (gmail 비번x)
+    properties:
+      mail:
+        smtp:
+          suth: true
+          starttls:
+            enable: true
+
+  devtools:
+    livereload:
+      enabled: true
+
+    freemarker:
+      cache: false
+
+    thymeleaf:
+      cache: false
+
+  # DB 세팅
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/[db이름]?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeNehavior=convertToNull&connectTimeout=60
+    username: [아이디]
+    password: [비밀번호]
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+      open-in-view: true
