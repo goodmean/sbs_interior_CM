@@ -27,10 +27,11 @@ public class MailController {
 		try{
 			mailService.sendMail(findPasswordForm);
 		} catch (Exception e){
+			e.printStackTrace();
 			return false;
 		}
 
-		return false;
+		return true;
 	}
 
 }

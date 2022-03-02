@@ -1,10 +1,12 @@
 let token = document.querySelector("meta[name='_csrf']").getAttribute("content");
-let header = document.querySelector("meta[name='_csrf_header']").getAttribute("content");
+//let header = document.querySelector("meta[name='_csrf_header']").getAttribute("content");
 
 const findForm = document.querySelector("#findForm");
 findForm.addEventListener("submit", findPw);
 
-async function findPw(){
+async function findPw(e){
+
+    e.preventDefault();
 
     let loginId = document.querySelector("#loginId").value;
     let email = document.querySelector("#email").value;
@@ -19,16 +21,16 @@ async function findPw(){
 
     let data = {
 
-        method = "POST",
+        method : "POST",
         body: JSON.stringify(
             {
                 loginId : loginId,
                 email : email,
             }
         ),
-        header: {
-        'Content-Type' : 'application/json'
-        'X-CSRF-TOKEN' : token
+        headers: {
+        'Content-Type' : 'application/json',
+        'X-CSRF-TOKEN' : token,
         }
 
     }
