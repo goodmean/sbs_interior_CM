@@ -3,6 +3,8 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout}">
 <head>
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
     <meta charset="UTF-8">
     <title>마이페이지</title>
 
@@ -15,6 +17,9 @@
         <div class="">
             <span>회원 닉네임</span>
             <span th:text="${memberInfo.nickname}"></span>
+            <span>
+                <button type="button" th:attr="onclick=|removeMember('${logonMember}')|">회원 탈퇴</button>
+            </span>
         </div>
 
         <table>
@@ -54,7 +59,7 @@
         </table>
 
     </div>
-
+    <script src="/js/mypage.js"></script>
 </div>
 </body>
 </html>

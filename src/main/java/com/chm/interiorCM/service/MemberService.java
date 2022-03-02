@@ -149,4 +149,12 @@ public class MemberService implements UserDetailsService {
 
     }
 
+    @Transactional
+	public void deleteMember(String loginId) {
+
+        Member findMember = findByLoginId(loginId);
+
+        memberRepository.delete(findMember);
+
+	}
 }

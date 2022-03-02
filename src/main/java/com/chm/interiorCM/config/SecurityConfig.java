@@ -34,7 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/boards/**"
                         ).permitAll()
                         .mvcMatchers(
-                                "/mypage/**"
+                                "/mypage/**",
+                                "/members/**"
                         )
                         .hasAnyRole("MEMBER", "ADMIN")
                 .mvcMatchers("/adm/**").hasRole("ADMIN")

@@ -26,6 +26,7 @@ public class MyPageController {
 		MyPageDTO articles = memberService.getMyArticles(principal.getName());
 
 		model.addAttribute("memberInfo", articles);
+		model.addAttribute("logonMember", principal.getName());
 
 		return "usr/member/mypage";
 
