@@ -4,97 +4,134 @@
       layout:decorate="~{layouts/layout}">
 <head>
     <meta charset="UTF-8">
-    <title>게시판 상세보기</title>
+    <title>게시판 디테일</title>
 </head>
 <body>
-    <div layout:fragment="content">
+<div layout:fragment="content">
 
-        <div class="container">
+    <div class="container mx-auto">
 
-            <div class="content">
-
-                <div class="">
-                    <span>게시판 이름</span>
-                    <span th:text="${board.name}"></span>
-                </div>
-                <!-- /boards/{id}/articles/write -->
-                <div class="">
-                    <a th:href="@{~/boards/} + ${board.id} + @{/articles/write}">
-                        <span>게시물 작성</span>
+        <nav class="flex mt-8" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a th:href="@{~/}" class="inline-flex items-center text-xl font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                        <svg class="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                        Home
                     </a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                        <a th:href="@{~/boards}" class="ml-1 text-xl font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white">게시판</a>
+                    </div>
+                </li>
+                <li aria-current="page">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                        <span class="ml-1 text-xl font-medium text-gray-400 md:ml-2 dark:text-gray-500" th:text="${board.name}">Flowbite</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+
+
+
+        <div class="content mt-8">
+
+            <div class="flex flex-col">
+                <div class="overflow-x-auto shadow-md sm:rounded-lg">
+                    <div class="inline-block min-w-full align-middle dark:bg-gray-800">
+
+                        <div class="p-4 inline-block">
+                            <label for="table-search" class="sr-only">Search</label>
+                            <div class="relative mt-1">
+
+                                <form th:action="@{~/boards/} + ${board.id} + @{?page=} + ${currentPage}" method="get">
+
+                                    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                                    </div>
+
+                                    <input type="hidden" name="page" value="1">
+                                    <input type="text" name="searchKeyword" th:value="${keyword}" id="table-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
+
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="inline-block float-right mt-4">
+
+                            <a th:href="@{~/boards/} + ${board.id} + @{/articles/write}">
+                                <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">게시글 작성</button>
+                            </a>
+
+                        </div>
+
+                        <div class="overflow-hidden">
+                            <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+                                <thead class="bg-gray-100 dark:bg-gray-700">
+                                <tr>
+                                    <th scope="col" class="py-3 px-6 text-xl font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        게시글 번호
+                                    </th>
+                                    <th scope="col" class="py-3 px-6 text-xl font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        게시글 제목
+                                    </th>
+                                    <th scope="col" class="py-3 px-6 text-xl font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        게시글 작성자
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                                <th:block th:if="${articles.size() != 0}">
+                                    <tr th:each="article : ${articles}" class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <td class="py-4 px-6 text-lg font-medium text-gray-900 whitespace-nowrap dark:text-white" th:text="${article.id}">번호</td>
+                                        <td class="py-4 px-6 text-lg font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                            <a th:href="@{~/articles/} + ${article.id}">
+                                                <span th:text="${article.title}"></span>
+                                            </a>
+                                        </td>
+                                        <td class="py-4 px-6 text-lg font-medium text-gray-900 whitespace-nowrap dark:text-white" th:text="${article.nickname}">작성자</td>
+                                    </tr>
+                                </th:block>
+                                <th:block  th:unless="${articles.size() != 0}">
+                                    <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <td class="py-4 px-6 text-lg font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <span>검색 결과가 없습니다.</span>
+                                        </td>
+                                    </tr>
+                                </th:block>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="search-container">
-
-                    <form th:action="@{~/boards/} + ${board.id} + @{?page=} + ${currentPage}" method="get">
-
-                        <input type="hidden" name="page" value="1">
-                        <input type="text" name="searchKeyword" th:value="${keyword}">
-
-                        <button>검색</button>
-
-                    </form>
-
-                </div>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>게시판 이름</th>
-                            <th>게시글 번호</th>
-                            <th>게시글 제목</th>
-                            <th>게시글 작성자</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                    <th:block th:if="${articles.size() != 0}">
-                        <tr th:each="article : ${articles}">
-                            <td>
-                                <span th:text="${article.id}"></span>
-                            </td>
-                            <td>
-                                <a th:href="@{~/articles/} + ${article.id}">
-                                    <span th:text="${article.title}"></span>
-                                </a>
-                            </td>
-                            <td>
-                                <span th:text="${article.nickname}"></span>
-                            </td>
-                        </tr>
-                    </th:block>
-                    <th:block th:unless="${articles.size() != 0}">
-                        <tr>
-                            <td>
-                                <span>검색 결과가 없습니다.</span>
-                            </td>
-                        </tr>
-                    </th:block>
-                    </tbody>
-
-                </table>
-
             </div>
+        </div>
 
-            <div class="page-container">
-                <th:block th:if="${articles.size() != 0}">
-                    <th:block th:each="i : ${#numbers.sequence(1, maxPage)}">
-                        <a th:if="${keyword.equals('')}" th:href="@{~/boards/} + ${board.id} + @{?page=} + ${i}" th:text="${i}"></a>
-                        <a th:unless="${keyword.equals('')}" th:href="@{~/boards/} + ${board.id} + @{?page=} + ${i} + @{&searchKeyword=} + ${keyword}" th:text="${i}"></a>
-                    </th:block>
-                </th:block>
+        <div class="page-container mt-8 text-center">
 
-                <th:block>
-                    <th:block th:unless="${articles.size() != 0}">
-                        <a th:href="@{~/boards/} + ${board.id} + @{?page=} + 1" th:text="1"></a>
-                    </th:block>
-                </th:block>
-            </div>
+            <th:block th:if="${articles.size() != 0}">
+                <nav aria-label="Page navigation example">
+                    <ul class="inline-flex items-center -space-x-px">
+                        <li th:each="i : ${#numbers.sequence(1, maxPage)}">
+                            <a th:if="${keyword.equals('')}" th:href="@{~/boards/} + ${board.id} + @{?page=} + ${i}" th:text="${i}" class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+                            <a th:unless="${keyword.equals('')}" th:href="@{~/boards/} + ${board.id} + @{?page=} + ${i} + @{&searchKeyword=} + ${keyword}" th:text="${i}" class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+                        </li>
+                    </ul>
+                </nav>
+            </th:block>
 
+            <th:block  th:unless="${articles.size() != 0}">
+                <ul class="inline-flex items-center -space-x-px">
+                    <li>
+                        <a class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+                    </li>
+                </ul>
+            </th:block>
         </div>
 
     </div>
-
+</div>
 </body>
 </html>
