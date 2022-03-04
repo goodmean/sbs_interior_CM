@@ -13,29 +13,28 @@
 
             <div class="contents">
 
-                <table>
+                <div class="container mx-auto h-full mt-16">
 
-                    <thead>
-                        <tr>
-                            <th>게시판 번호</th>
-                            <th>게시판 이름</th>
-                        </tr>
-                    </thead>
+                    <p class="text-4xl font-bold">커뮤니티 목록</p>
 
-                    <tbody>
-                        <tr th:each="board : ${boardList}">
-                            <td>
-                                <span th:text="${board.id}"></span>
-                            </td>
-                            <td>
-                                <a th:href="@{~/boards/} + ${board.id}">
-                                    <span th:text="${board.name}"></span>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
+                    <hr class="bg-grey-600 mt-8">
 
-                </table>
+                    <div class="flex flex-wrap mt-16 justify-between mx-auto">
+
+                        <div th:each="board : ${boardList}">
+                            <a th:href="@{~/boards/} + ${board.id}" class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <img class="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="">
+                                <div class="flex flex-col justify-between p-4 leading-normal">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" th:text="${board.name}">게시판 이름</h5>
+                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400" th:text="${board.detail}">게시판 설명</p>
+                                </div>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
