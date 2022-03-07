@@ -119,10 +119,10 @@ public class MemberController {
 
     }
 
-    @GetMapping("/members/modify/{id}")
-    public String showModify(@PathVariable(name = "id") Long id, Model model, Principal principal){
+    @GetMapping("/members/modify/{loginId}")
+    public String showModify(@PathVariable(name = "loginId") String loginId, Model model, Principal principal){
 
-        Member findMember = memberService.findById(id);
+        Member findMember = memberService.findByLoginId(loginId);
 
         if( !findMember.getLoginId().equals(principal.getName()) ){
             return "redirect:/";
@@ -135,14 +135,14 @@ public class MemberController {
         return "usr/member/modify";
     }
 
-    @PostMapping("/members/modify/{id}")
-    public String doModify(@PathVariable(name = "id") Long id, @Validated MemberModifyForm memberModifyForm, BindingResult bindingResult, Principal principal, Model model){
+    @PostMapping("/members/modify/{loginId}")
+    public String doModify(@PathVariable(name = "loginId") String loginId, @Validated MemberModifyForm memberModifyForm, BindingResult bindingResult, Principal principal, Model model){
 
         if( bindingResult.hasErrors() ){
             return "usr/member/modify";
         }
 
-        Member findMember = memberService.findById(id);
+        Member findMember = memberService.findByLoginId(loginId);
 
         if( !findMember.getLoginId().equals(principal.getName()) ){
             return "redirect:/";

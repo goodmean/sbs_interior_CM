@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout}">
 <head>
@@ -8,29 +8,48 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <div class="container">
 
-        <div class="contents">
+    <div class="mb-32"></div>
 
-            <form action="" th:action="@{~/members/doLogin}" th:object="${memberLoginForm}" method="post">
+    <div class="container flex justify-center mx-auto">
 
-                <div class="form-item">
-                    <span>아이디</span>
-                    <input type="text" name="loginId">
+        <div class="join-form border p-20 rounded-lg shadow-md">
+
+            <div class="login-title text-2xl flex justify-center mb-12">
+                <span> 로그인 </span>
+            </div>
+
+            <form action="" th:action="@{~/members/doLogin}" th:object="${memberLoginForm}" method="POST">
+                <div class="flex justify-center">
+                    <div class="flex-col">
+                        <div class="form-item mb-4">
+                            <input class="border rounded p-1 rounded bg-gray-50" type="text" name="loginId"  placeholder="아이디" autocomplete="off" required>
+                        </div>
+
+                        <div class="form-item mb-4">
+                            <input class="border rounded p-1 rounded bg-gray-50" type="password" name="loginPw"  placeholder="비밀번호" autocomplete="off" required>
+                        </div>
+
+                        <div class="form-item flex justify-center mt-8">
+                            <button class="mr-4 border bg-blue-500 p-1 rounded text-white">
+                                로그인
+                            </button>
+                            <a href="/">
+                                <button class="border bg-blue-500 p-1 rounded text-white">취소</button>
+                            </a>
+                        </div>
+
+                        <div class="flex justify-center mt-6 hover:underline">
+                            <a th:href="@{~/members/find/pw}">비밀번호를 잊어버리셨나요?</a>
+                        </div>
+
+
+                    </div>
                 </div>
-
-                <div class="form-item">
-                    <span>비밀번호</span>
-                    <input type="password" name="loginPw">
-                </div>
-
-                <div class="form-item">
-                    <button>로그인</button>
-                </div>
-
             </form>
-
         </div>
+
+
 
     </div>
 </div>

@@ -29,11 +29,10 @@
                         <li sec:authorize="hasRole('ROLE_ADMIN')">
                             <a th:href="@{~/adm/page}" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">관리자 페이지</a>
                         </li>
+                        <li sec:authorize="hasRole('ROLE_MEMBER')">
+                            <a th:href="@{~/mypage/} + ${#authentication.name}" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">마이 페이지</a>
                         <li>
-                            <a href="/articles/write" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">게시글 작성</a>
-                        </li>
-                        <li>
-                            <a href="/members/modify" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">회원 정보</a>
+                        <a th:href="@{~/members/modify/} + ${#authentication.name}" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">회원정보 수정</a>
                         </li>
                     </ul>
                     <div class="py-1">
@@ -41,10 +40,7 @@
                     </div>
                 </div>
                 </li>
-                <!--
-                <li sec:authorize="isAuthenticated()">
-                    <span sec:authentication="principal.username">님</span>
-                </li>-->
+
             </ul>
 
         </nav>
