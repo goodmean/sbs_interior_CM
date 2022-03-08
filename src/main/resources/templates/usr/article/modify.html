@@ -9,39 +9,71 @@
 <body>
 <div layout:fragment="content">
 
-    <div class="container">
+    <div class="container mx-auto">
 
-        <div class="contents">
+        <div class="contents my-8">
 
-            <div class="">
-                <span>게시판 이름</span>
-                <span th:text="${boardName}"></span>
+            <div class="title-container mb-12">
+                <nav class="flex mt-8" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                        <li class="inline-flex items-center">
+                            <a th:href="@{~/}" class="inline-flex items-center text-xl font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                                <svg class="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                <a th:href="@{~/boards}" class="ml-1 text-xl font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white">게시판</a>
+                            </div>
+                        </li>
+                        <li aria-current="page">
+                            <div class="flex items-center">
+                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                <a th:href="@{~/boards/} + ${boardId}" class="ml-1 text-xl font-medium text-gray-400 md:ml-2 dark:text-gray-500" th:text="${boardName}">Flowbite</a>
+                            </div>
+                        </li>
+                        <li aria-current="page">
+                            <div class="flex items-center">
+                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                <span class="ml-1 text-xl font-medium text-gray-400 md:ml-2 dark:text-gray-500">게시글 수정</span>
+                            </div>
+                        </li>
+                    </ol>
+                </nav>
             </div>
 
-            <form action="" th:action="@{~/articles/modify/} + ${articleId}" th:object="${articleModifyForm}" method="post">
+            <div class="form-container border border-grey-400 shadow-sm rounded-md">
 
-                <input type="hidden" th:value="${boardId}" name="board_id">
+                <form action="" th:action="@{/articles/modify/} + ${articleId}" th:object="${articleModifyForm}" method="post" class="p-12">
+                    <input type="hidden" th:value="${boardId}" name="board_id">
 
-                <div class="form-item">
-                    <span>게시글 제목</span>
-                    <input type="text" name="title" th:field="*{title}" th:errorclass="field-error">
-                    <span th:errors="*{title}"></span>
-                </div>
+                    <div class="form-item">
+                        <div class="mb-6">
+                            <label for="base-input" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-300">제목</label>
+                            <input name="title" type="text" th:field="*{title}" th:errorclass="field-error" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        </div>
+                        <span th:errors="*{title}"></span>
+                    </div>
 
-                <div class="form-item">
-                    <span>게시글 내용</span>
-                    <textarea name="body" cols="30" rows="10" th:field="*{body}" th:errorclass="field-error"></textarea>
-                    <span th:errors="*{body}"></span>
-                </div>
+                    <div class="form-item">
+                        <label for="message" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-400">내용</label>
+                        <textarea name="body" cols="30" rows="10" th:field="*{body}" th:errorclass="field-error" id="message" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+                        <span th:errors="*{body}"></span>
+                    </div>
 
-                <div class="form-item">
-                    <button>확인</button>
-                    <a href="/">
-                        <button type="submit">취소</button>
-                    </a>
-                </div>
+                    <div class="form-item flex justify-end mt-6">
+                        <div class="">
+                            <button type="button" class="py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">작성</button>
+                        </div>
+                        <a href="/" class="mx-2">
+                            <button type="button" class="py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">취소</button>
+                        </a>
+                    </div>
 
-            </form>
+                </form>
+            </div>
 
         </div>
 
