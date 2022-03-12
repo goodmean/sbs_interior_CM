@@ -7,25 +7,59 @@
     <title>관리자 페이지</title>
 </head>
 <body>
-    <div layout:fragment="content">
+<div layout:fragment="content">
 
-        <div class="">
-            <a th:href="@{~/adm/members}">
-                <span>회원 관리</span>
-            </a>
+    <div class="admin-header-container">
+
+        <div class="title-container flex">
+
+            <h2 class="font-bold text-3xl">관리자 대시보드</h2>
+
+            <div class="status-container items-center flex justify-center ml-2">
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">Alpha</span>
+            </div>
+
         </div>
-        <div class="">
-            <a th:href="@{~/adm/articles}">
-                <span>게시글 관리</span>
-            </a>
+
+        <hr class="my-2 border-grey-200">
+
+        <div class="admin-main-container">
+
+            <div class="statistics-container flex flex-col">
+
+                <div class="statistics-item flex flex-col my-4">
+
+                    <div class="item-header font-bold text-2xl">
+                        <h2>회원 데이터</h2>
+                    </div>
+                    <div class="item-body flex mt-4">
+
+                        <div class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md mx-4">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">총 회원</h5>
+                            <p class="font-normal text-gray-700 dark:text-gray-400 text-xl">총 회원 (금일 가입자)</p>
+                            <p class="font-normal text-gray-700 dark:text-gray-400 mt-2">
+                                <span class="font-bold text-xl">[[${memberStatData.totalMemberCount}]]</span> <span class="font-bold text-xl text-blue-600">(+ [[${memberStatData.todaySignMemberCount}]] )</span>
+                            </p>
+                        </div>
+
+                        <div class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md mx-4">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">회원 등급 통계</h5>
+                            <p class="font-normal text-gray-700 dark:text-gray-400 text-xl">관리자 : [[${memberStatData.adminMemberCount}]] 명</p>
+                            <p class="font-normal text-gray-700 dark:text-gray-400 text-xl">일반 회원 : [[${memberStatData.userMemberCount}]] 명</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
         </div>
-        <div class="">
-            <a th:href="@{~/adm/boards}">
-                <span>게시판 관리</span>
-            </a>
-        </div>
+
+
     </div>
-<body>
 
+</div>
 </body>
 </html>
