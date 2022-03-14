@@ -17,7 +17,10 @@ public class AdmController {
 	@GetMapping("/page")
 	public String showAdminPage(Model model){
 
+		model.addAttribute("memberStatData", admService.getMemberStatDto());
 		model.addAttribute("boardStatData", admService.getBoardStatDto());
+		model.addAttribute("articleStatData", admService.getArticleStatDto());
+
 		return "adm/general/main";
 	}
 

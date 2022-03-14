@@ -1,13 +1,11 @@
 package com.chm.interiorCM.service;
 
 import com.chm.interiorCM.config.Role;
+import com.chm.interiorCM.dao.ArticleRepository;
 import com.chm.interiorCM.dao.BoardRepository;
 import com.chm.interiorCM.dao.MemberRepository;
 import com.chm.interiorCM.domain.Board;
-import com.chm.interiorCM.dto.adm.AdmBoardCountDto;
-import com.chm.interiorCM.dto.adm.AdmBoardNameDto;
-import com.chm.interiorCM.dto.adm.BoardStatDto;
-import com.chm.interiorCM.dto.adm.MemberStatDto;
+import com.chm.interiorCM.dto.adm.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +20,7 @@ public class AdmService {
 
 	private final MemberRepository memberRepository;
 	private final BoardRepository boardRepository;
+	private final ArticleRepository articleRepository;
 
 	public MemberStatDto getMemberStatDto(){
 
@@ -64,4 +63,11 @@ public class AdmService {
 
 	}
 
+	public Object getArticleStatDto() {
+
+		return new ArticleStatDto(
+				articleRepository.count()
+		);
+
+	}
 }
