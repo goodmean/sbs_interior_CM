@@ -61,17 +61,23 @@
 
                         <div class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md mx-4">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">총 게시판 수</h5>
-                            <p class="font-normal text-gray-700 dark:text-gray-400 text-xl">총 게시판 수 : </p>
+                            <p class="font-normal text-gray-700 dark:text-gray-400 text-xl">총 게시판 수 : [[${boardStatData.totalBoardCount}]]</p>
                         </div>
 
                         <div class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md mx-4">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">신규 개설 게시판</h5>
-                            <p class="font-normal text-gray-700 dark:text-gray-400 text-xl"></p>
+                            <p class="font-normal text-gray-700 dark:text-gray-400 text-xl">신규 개설 게시판 / 개설일</p>
+                            <th:block th:each="latestBoard : ${boardStatData.latestBoardList}">
+                                <p class="font-normal text-gray-700 dark:text-gray-400 text-xl">[[${latestBoard.name}]] | [[${#temporals.format(latestBoard.regDate, 'yyyy-MM-dd')}]]</p>
+                            </th:block>
                         </div>
 
                         <div class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md mx-4">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">게시판 상태</h5>
-                            <p class="font-normal text-gray-700 dark:text-gray-400 text-xl"></p>
+                            <p class="font-normal text-gray-700 dark:text-gray-400 text-xl">게시판 명 / 게시글 갯수</p>
+                            <th:block th:each="countBoard : ${boardStatData.boardCountList}">
+                                <p class="font-normal text-gray-700 dark:text-gray-400 text-xl">[[${countBoard.name}]] | [[${countBoard.articleCount}]]</p>
+                            </th:block>
                         </div>
 
                     </div>
