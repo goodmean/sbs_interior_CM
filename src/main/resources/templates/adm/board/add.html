@@ -1,13 +1,60 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout}">
+      layout:decorate="~{layouts/adminLayout}">
 <head>
     <meta charset="UTF-8">
     <title>게시판 생성</title>
 </head>
 <body>
 <div layout:fragment="content">
+
+    <div class="board-add-container">
+
+        <div class="add-header-container">
+
+            <div class="title-container">
+                <h2 class="font-bold text-3xl">게시판 생성</h2>
+            </div>
+
+            <hr class="my-6">
+
+        </div>
+
+        <div class="body-container">
+
+            <div class="">
+
+            </div>
+
+            <form th:action="@{~/adm/boards/add}" th:object="${boardSaveForm}" method="POST">
+
+                <div class="relative z-0 mb-6 w-full group">
+                    <input th:field="*{name}" th:errorclass="field-error" type="text" name="name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                    <label class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+                    <span th:errors="*{name}"></span>
+                </div>
+                <div class="relative z-0 mb-6 w-full group">
+                    <input th:field="*{detail}" th:errorclass="field-error" type="text" name="detail" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                    <label class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm password</label>
+                    <span th:errors="*{detail}"></span>
+                </div>
+
+                <div class="form-item">
+                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                    <a href="#">
+                        <button type="button" onclik="window.history.back();" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">취소</button>
+                    </a>
+                </div>
+
+
+            </form>
+
+        </div>
+
+
+    </div>
+    
     <div class="container">
 
         <div class="contents">
