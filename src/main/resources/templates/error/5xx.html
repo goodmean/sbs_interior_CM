@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${status} + 'ERROR'">ERROR</title>
+</head>
+<body>
+
+<div class="">
+    <h1 th:text="${status}">ERROR</h1>
+    <hr>
+
+    <div class="">
+        <h2>X_X</h2>
+    </div>
+
+    <div class="">
+        <p>요청을 처리할 수 없습니다.</p>
+    </div>
+
+</div>
+
+<div class="">
+    <button type="button" onclick="location.href='/'">메인으로</button>
+    <button type="button" onclick="history.back()">이전으로</button>
+</div>
+
+
+</body>
+</html>
