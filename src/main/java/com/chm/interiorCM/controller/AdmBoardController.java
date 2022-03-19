@@ -31,6 +31,7 @@ public class AdmBoardController {
 	public String showManageBoard( Model model ){
 
 		model.addAttribute("boards", boardService.getBoardsList());
+		model.addAttribute("boardSaveForm", new BoardSaveForm());
 
 		return "adm/board/main";
 	}
